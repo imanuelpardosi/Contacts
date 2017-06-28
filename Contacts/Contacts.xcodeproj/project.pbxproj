@@ -15,6 +15,9 @@
 		DB2B37471F03674100C6D75D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB2B37451F03674100C6D75D /* LaunchScreen.storyboard */; };
 		DB2B37521F03674100C6D75D /* ContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B37511F03674100C6D75D /* ContactsTests.swift */; };
 		DB2B375D1F03674100C6D75D /* ContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B375C1F03674100C6D75D /* ContactsUITests.swift */; };
+		DBE1D9901F03694F00AC3580 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1D98F1F03694F00AC3580 /* Endpoint.swift */; };
+		DBE1D9921F0371D300AC3580 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1D9911F0371D300AC3580 /* PersistenceError.swift */; };
+		DBE1D9941F03722E00AC3580 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1D9931F03722E00AC3580 /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		DB2B37581F03674100C6D75D /* ContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2B375C1F03674100C6D75D /* ContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsUITests.swift; sourceTree = "<group>"; };
 		DB2B375E1F03674100C6D75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBE1D98F1F03694F00AC3580 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		DBE1D9911F0371D300AC3580 /* PersistenceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
+		DBE1D9931F03722E00AC3580 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,12 @@
 		DB2B37381F03674100C6D75D /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				DBE1D9891F0368ED00AC3580 /* Common */,
+				DBE1D98A1F0368F500AC3580 /* Entities */,
+				DBE1D98E1F03692200AC3580 /* EditContact */,
+				DBE1D98D1F03691B00AC3580 /* AddContact */,
+				DBE1D98C1F03690E00AC3580 /* ContactDetail */,
+				DBE1D98B1F03690700AC3580 /* ContactList */,
 				DB2B37391F03674100C6D75D /* AppDelegate.swift */,
 				DB2B373B1F03674100C6D75D /* ViewController.swift */,
 				DB2B373D1F03674100C6D75D /* Main.storyboard */,
@@ -126,6 +138,51 @@
 				DB2B375E1F03674100C6D75D /* Info.plist */,
 			);
 			path = ContactsUITests;
+			sourceTree = "<group>";
+		};
+		DBE1D9891F0368ED00AC3580 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DBE1D98F1F03694F00AC3580 /* Endpoint.swift */,
+				DBE1D9911F0371D300AC3580 /* PersistenceError.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		DBE1D98A1F0368F500AC3580 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				DBE1D9931F03722E00AC3580 /* Contact.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		DBE1D98B1F03690700AC3580 /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ContactList;
+			sourceTree = "<group>";
+		};
+		DBE1D98C1F03690E00AC3580 /* ContactDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ContactDetail;
+			sourceTree = "<group>";
+		};
+		DBE1D98D1F03691B00AC3580 /* AddContact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AddContact;
+			sourceTree = "<group>";
+		};
+		DBE1D98E1F03692200AC3580 /* EditContact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EditContact;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +253,7 @@
 				TargetAttributes = {
 					DB2B37351F03674100C6D75D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NLMNPLR274;
+						DevelopmentTeam = TTUQ83Y5R4;
 						ProvisioningStyle = Automatic;
 					};
 					DB2B374C1F03674100C6D75D = {
@@ -263,8 +320,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE1D9941F03722E00AC3580 /* Contact.swift in Sources */,
 				DB2B373C1F03674100C6D75D /* ViewController.swift in Sources */,
 				DB2B373A1F03674100C6D75D /* AppDelegate.swift in Sources */,
+				DBE1D9901F03694F00AC3580 /* Endpoint.swift in Sources */,
+				DBE1D9921F0371D300AC3580 /* PersistenceError.swift in Sources */,
 				DB2B37421F03674100C6D75D /* Contacts.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NLMNPLR274;
+				DEVELOPMENT_TEAM = TTUQ83Y5R4;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipardosi.Contacts;
@@ -430,7 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NLMNPLR274;
+				DEVELOPMENT_TEAM = TTUQ83Y5R4;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipardosi.Contacts;
@@ -512,6 +572,7 @@
 				DB2B37631F03674100C6D75D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB2B37641F03674100C6D75D /* Build configuration list for PBXNativeTarget "ContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +581,7 @@
 				DB2B37661F03674100C6D75D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB2B37671F03674100C6D75D /* Build configuration list for PBXNativeTarget "ContactsUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +590,7 @@
 				DB2B37691F03674100C6D75D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
