@@ -69,7 +69,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNH-Dq-ozI" id="v0h-i9-Hhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="pVN-eT-g91" userLabel="profilePicture">
@@ -86,7 +86,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-fX-r6t" userLabel="favorite">
-                                                            <rect key="frame" x="362" y="22" width="20" height="19"/>
+                                                            <rect key="frame" x="323" y="22" width="20" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="XVx-54-jxq"/>
                                                             </constraints>
@@ -145,7 +145,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LYP-D6-Ixg">
             <objects>
-                <navigationController id="iws-v9-tii" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ContactsNavigationController" id="iws-v9-tii" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A65-3O-M4i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

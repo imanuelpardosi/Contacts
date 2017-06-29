@@ -18,7 +18,7 @@ protocol Endpoint {
 }
 
 enum Endpoints {
-    enum Contact: Endpoint {
+    enum Contacts: Endpoint {
         case fetch
         
         public var path: String {

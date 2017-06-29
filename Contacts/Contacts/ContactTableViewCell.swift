@@ -14,9 +14,14 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var favorite: UIImageView!
 
-    func set() {
+    func set(forContact contact: ContactModel) {
         self.selectionStyle = .none
-        name.text = "Amitabh Bachchan"
+        name.text = "\(contact.firstName) \(contact.lastName)"
+        if !contact.favorite {
+            favorite.isHidden = true
+        } else {
+            favorite.isHidden = false
+        }
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
         profilePicture.clipsToBounds = true
     }
