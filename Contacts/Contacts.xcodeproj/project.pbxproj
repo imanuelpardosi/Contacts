@@ -399,7 +399,7 @@
 				TargetAttributes = {
 					DB2B37351F03674100C6D75D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = TTUQ83Y5R4;
+						DevelopmentTeam = NLMNPLR274;
 						ProvisioningStyle = Automatic;
 					};
 					DB2B374C1F03674100C6D75D = {
@@ -773,7 +773,7 @@
 			baseConfigurationReference = B9F82493D4F6B33BED284354 /* Pods-Contacts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TTUQ83Y5R4;
+				DEVELOPMENT_TEAM = NLMNPLR274;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipardosi.Contacts;
@@ -787,7 +787,7 @@
 			baseConfigurationReference = D13AA8905CD29DB232801CA0 /* Pods-Contacts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TTUQ83Y5R4;
+				DEVELOPMENT_TEAM = NLMNPLR274;
 				INFOPLIST_FILE = Contacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ipardosi.Contacts;
