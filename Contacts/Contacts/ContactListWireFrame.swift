@@ -17,7 +17,6 @@ class ContactListWireFrame: ContactListWireFrameProtocol {
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(contactDetailViewController, animated: true)
         }
-
     }
     
     class func createContactListModule() -> UIViewController {
