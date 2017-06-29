@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
 
 class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicture: UIImageView!
@@ -24,5 +25,9 @@ class ContactTableViewCell: UITableViewCell {
         }
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
         profilePicture.clipsToBounds = true
+        
+        let url = URL(string: contact.profilePicture)!
+        let placeholderImage = UIImage(named: "user")!
+        profilePicture?.af_setImage(withURL: url, placeholderImage: placeholderImage)
     }
 }

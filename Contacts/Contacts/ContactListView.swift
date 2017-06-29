@@ -59,6 +59,7 @@ extension ContactListView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(contactList[indexPath.row])
+        presenter?.showContactDetail(forContact: contactList[indexPath.row])
     }
 }
 
