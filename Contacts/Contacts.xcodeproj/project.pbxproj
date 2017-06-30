@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B6DD2B1C4B4AF7A13EDD9A86 /* Pods_ContactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037C51E9502157EF13E640F6 /* Pods_ContactsUITests.framework */; };
 		C118AF1E29571172ECB19C2D /* Pods_ContactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BBBF87E31453BCD395F10F /* Pods_ContactsTests.framework */; };
+		DB15C5E01F064A5900F0D7C1 /* ContactDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5DF1F064A5900F0D7C1 /* ContactDetailInteractor.swift */; };
+		DB15C5E41F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5E31F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift */; };
+		DB15C5E61F064B0700F0D7C1 /* ContactDetailLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5E51F064B0600F0D7C1 /* ContactDetailLocalDataManager.swift */; };
 		DB17BDBD1F038E61008A13A7 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17BDBC1F038E61008A13A7 /* ContactListView.swift */; };
 		DB17BDC01F0390EF008A13A7 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17BDBF1F0390EF008A13A7 /* ContactTableViewCell.swift */; };
 		DB1E98441F04FBB6005BE4AA /* ContactDetailWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1E98431F04FBB6005BE4AA /* ContactDetailWireFrame.swift */; };
@@ -64,6 +67,9 @@
 		8F1F3421D97C377D3D5F801A /* Pods-ContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsUITests/Pods-ContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F82493D4F6B33BED284354 /* Pods-Contacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.debug.xcconfig"; sourceTree = "<group>"; };
 		D13AA8905CD29DB232801CA0 /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
+		DB15C5DF1F064A5900F0D7C1 /* ContactDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailInteractor.swift; sourceTree = "<group>"; };
+		DB15C5E31F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailRemoteDataManager.swift; sourceTree = "<group>"; };
+		DB15C5E51F064B0600F0D7C1 /* ContactDetailLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailLocalDataManager.swift; sourceTree = "<group>"; };
 		DB17BDBC1F038E61008A13A7 /* ContactListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		DB17BDBF1F0390EF008A13A7 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		DB1E98431F04FBB6005BE4AA /* ContactDetailWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailWireFrame.swift; sourceTree = "<group>"; };
@@ -150,6 +156,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DB15C5E11F064AB100F0D7C1 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				DB15C5E31F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift */,
+			);
+			name = Remote;
+			sourceTree = "<group>";
+		};
+		DB15C5E21F064ABA00F0D7C1 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				DB15C5E51F064B0600F0D7C1 /* ContactDetailLocalDataManager.swift */,
+			);
+			name = Local;
+			sourceTree = "<group>";
+		};
 		DB17BDBE1F0390DF008A13A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +216,7 @@
 		DB1E98481F04FC81005BE4AA /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				DB15C5DF1F064A5900F0D7C1 /* ContactDetailInteractor.swift */,
 			);
 			name = Interactor;
 			sourceTree = "<group>";
@@ -201,6 +224,8 @@
 		DB1E98491F04FC8A005BE4AA /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				DB15C5E11F064AB100F0D7C1 /* Remote */,
+				DB15C5E21F064ABA00F0D7C1 /* Local */,
 			);
 			name = DataManager;
 			sourceTree = "<group>";
@@ -669,6 +694,7 @@
 				DB2B373C1F03674100C6D75D /* ViewController.swift in Sources */,
 				DB904C481F04A54500A656F4 /* ContactListWireFrame.swift in Sources */,
 				DB2B373A1F03674100C6D75D /* AppDelegate.swift in Sources */,
+				DB15C5E61F064B0700F0D7C1 /* ContactDetailLocalDataManager.swift in Sources */,
 				DB904C4E1F04B06E00A656F4 /* ContactListLocalDataManager.swift in Sources */,
 				DB17BDC01F0390EF008A13A7 /* ContactTableViewCell.swift in Sources */,
 				DB9206461F0408890063B3D6 /* CoreDataStore.swift in Sources */,
@@ -676,6 +702,7 @@
 				DBF3F8001F0402C7009C3E83 /* Contact+CoreDataProperties.swift in Sources */,
 				DB904C4C1F04AD1700A656F4 /* ContactListInteractor.swift in Sources */,
 				DB2F4C7E1F049BA000820B26 /* Contact+CoreData.swift in Sources */,
+				DB15C5E01F064A5900F0D7C1 /* ContactDetailInteractor.swift in Sources */,
 				DBE1D9921F0371D300AC3580 /* PersistenceError.swift in Sources */,
 				DB1E98501F04FD90005BE4AA /* ContactDetailPresenter.swift in Sources */,
 				DB1E98441F04FBB6005BE4AA /* ContactDetailWireFrame.swift in Sources */,
@@ -683,6 +710,7 @@
 				DB1E984E1F04FD1A005BE4AA /* ContactDetailProtocols.swift in Sources */,
 				DBF3F7FE1F03C7F4009C3E83 /* ContactListProtocol.swift in Sources */,
 				DB2B37421F03674100C6D75D /* DataModel.xcdatamodeld in Sources */,
+				DB15C5E41F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift in Sources */,
 				DB1E984C1F04FCA9005BE4AA /* ContactDetailView.swift in Sources */,
 				DB904C4A1F04AB3E00A656F4 /* ContactListPresenter.swift in Sources */,
 			);

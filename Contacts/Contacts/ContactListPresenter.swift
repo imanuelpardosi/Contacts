@@ -25,7 +25,7 @@ class ContactListPresenter: ContactListPresenterProtocol {
 }
 
 extension ContactListPresenter: ContactListInteractorOutputProtocol {
-    func didRetreaveContacts(_ contacts: [ContactModel]) {
+    func didRetrieveContacts(_ contacts: [ContactModel]) {
         view?.hideLoading()
         view?.showPosts(with: contacts)
     }

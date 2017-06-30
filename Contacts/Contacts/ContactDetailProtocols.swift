@@ -29,3 +29,37 @@ protocol ContactDetailPresenterProtocol: class {
     func viewDidLoad()
 }
 
+protocol ContactDetailInteractorOutputProtocol: class {
+    // INTERACTOR -> PRESENTER
+    func didRetrieveContacts(_ contacts: [ContactModel])
+    func onError()
+}
+
+
+protocol ContactDetailInteractorInputProtocol: class {
+    var presenter: ContactDetailInteractorOutputProtocol? { get set }
+    var localDatamanager: ContactDetailLocalDataManagerInputProtocol? { get set }
+    var remoteDatamanager: ContactDetailRemoteDataManagerInputProtocol? { get set }
+    
+    // PRESENTER -> INTERACTOR
+    func retrieveContactById(id: Int)
+}
+
+protocol ContactDetailRemoteDataManagerInputProtocol: class {
+    var remoteRequestHandler: ContactDetailRemoteDataManagerOutputProtocol? { get set }
+    
+    // INTERACTOR -> REMOTEDATAMANAGER
+    func retrieveContactById(id: Int)
+}
+
+protocol ContactDetailRemoteDataManagerOutputProtocol: class {
+    // REMOTEDATAMANAGER -> INTERACTOR
+    func onContactsRetrieved(_ contacts: [ContactModel])
+    func onError()
+}
+
+protocol ContactDetailLocalDataManagerInputProtocol: class {
+    // INTERACTOR -> LOCALDATAMANAGER
+    func retrieveContactById(id: Int) throws -> [Contact]
+    func updateContact(id: Int, email: String, phoneNumber: String) throws
+}

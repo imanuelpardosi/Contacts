@@ -16,6 +16,8 @@ struct ContactModel {
     var profilePicture = ""
     var favorite = false
     var url = ""
+    var email = ""
+    var phoneNumber = ""
 }
 
 extension ContactModel: Mappable {
@@ -30,5 +32,7 @@ extension ContactModel: Mappable {
         profilePicture <- map["profile_pic"]
         favorite <- map["favorite"]
         url <- map["url"]
+        email <- map["email"]
+        phoneNumber <- map["phoneNumber"]
     }
 }

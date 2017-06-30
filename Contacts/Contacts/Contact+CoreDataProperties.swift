@@ -20,4 +20,6 @@ extension Contact {
     @NSManaged public var profilePicture: String?
     @NSManaged public var favorite: Bool
     @NSManaged public var url: String?
+    @NSManaged public var email: String?
+    @NSManaged public var phoneNumber: String?
 }

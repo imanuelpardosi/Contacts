@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol ContactListViewProtocol: class {
     var presenter: ContactListPresenterProtocol? { get set }
@@ -38,7 +39,7 @@ protocol ContactListPresenterProtocol: class {
 
 protocol ContactListInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didRetreaveContacts(_ contacts: [ContactModel])
+    func didRetrieveContacts(_ contacts: [ContactModel])
     func onError()
 }
 
@@ -55,7 +56,7 @@ protocol ContactListRemoteDataManagerInputProtocol: class {
     var remoteRequestHandler: ContactListRemoteDataManagerOutputProtocol? { get set }
     
     // INTERACTOR -> REMOTEDATAMANAGER
-    func retreaveContactList()
+    func retrieveContactList()
 }
 
 protocol ContactListRemoteDataManagerOutputProtocol: class {
@@ -67,5 +68,6 @@ protocol ContactListRemoteDataManagerOutputProtocol: class {
 protocol ContactListLocalDataManagerInputProtocol: class {
     // INTERACTOR -> LOCALDATAMANAGER
     func retrieveContactList() throws -> [Contact]
-    func savePost(id: Int, firstName: String, lastName: String, profilePicture: String, favorite: Bool, url: String) throws
+    func retrieveContactById(id: Int) throws -> [Contact]
+    func saveContact(id: Int, firstName: String, lastName: String, profilePicture: String, favorite: Bool, url: String, email: String, phoneNumber: String) throws
 }

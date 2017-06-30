@@ -16,31 +16,32 @@ class ContactListInteractor: ContactListInteractorInputProtocol {
     func retrieveContactList() {
         do {
             print("check local data")
+    
             if let contactList = try localDatamanager?.retrieveContactList() {
                 let contactModelList = contactList.map() {
-                    return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!)
+                    return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!, email: $0.email!, phoneNumber: $0.phoneNumber!)
                 }
                 if contactModelList.isEmpty {
-                    remoteDatamanager?.retreaveContactList()
+                    remoteDatamanager?.retrieveContactList()
                 } else {
-                    presenter?.didRetreaveContacts(contactModelList)
+                    presenter?.didRetrieveContacts(contactModelList)
                 }
             } else {
-                remoteDatamanager?.retreaveContactList()
+                remoteDatamanager?.retrieveContactList()
             }
         } catch {
-            presenter?.didRetreaveContacts([])
+            presenter?.didRetrieveContacts([])
         }
     }
 }
 
 extension ContactListInteractor: ContactListRemoteDataManagerOutputProtocol {
     func onContactsRetrieved(_ contacts: [ContactModel]) {
-        presenter?.didRetreaveContacts(contacts)
+        presenter?.didRetrieveContacts(contacts)
         
         for contactModel in contacts {
             do {
-                try localDatamanager?.savePost(id: contactModel.id, firstName: contactModel.firstName.capitalized, lastName: contactModel.lastName.capitalized, profilePicture: contactModel.profilePicture, favorite: contactModel.favorite, url: contactModel.url)
+                try localDatamanager?.saveContact(id: contactModel.id, firstName: contactModel.firstName.capitalized, lastName: contactModel.lastName.capitalized, profilePicture: contactModel.profilePicture, favorite: contactModel.favorite, url: contactModel.url, email: contactModel.email, phoneNumber: contactModel.phoneNumber)
             } catch {
                 
             }
