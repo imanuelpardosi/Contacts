@@ -69,7 +69,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNH-Dq-ozI" id="v0h-i9-Hhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="pVN-eT-g91" userLabel="profilePicture">
@@ -86,7 +86,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-fX-r6t" userLabel="favorite">
-                                                            <rect key="frame" x="323" y="22" width="20" height="19"/>
+                                                            <rect key="frame" x="362" y="22" width="20" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="XVx-54-jxq"/>
                                                             </constraints>
@@ -186,7 +186,7 @@
                                             <constraint firstAttribute="height" constant="58" id="eHC-b6-Ys5"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7y-fE-b2S" userLabel="ProfilePicture">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7y-fE-b2S" userLabel="Rectangle3">
                                         <rect key="frame" x="0.0" y="58" width="375" height="277"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="7F4-fX-svu">
@@ -280,7 +280,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.78675484630000003" green="0.94853076359999999" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.5086296893327259" green="0.95686274510000002" blue="0.89442402544773336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="kzy-Ni-mK7" firstAttribute="centerY" secondItem="vrN-5M-sli" secondAttribute="centerY" id="05W-bL-G3l"/>
                                             <constraint firstItem="LnY-7N-dHz" firstAttribute="centerY" secondItem="kzy-Ni-mK7" secondAttribute="centerY" id="1IK-wI-iUg"/>
@@ -380,10 +380,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="e7y-fE-b2S" secondAttribute="trailing" id="GYW-zx-2xB"/>
+                                    <constraint firstAttribute="trailing" secondItem="e7y-fE-b2S" secondAttribute="trailing" id="XZB-ty-Lk0"/>
                                     <constraint firstItem="e7y-fE-b2S" firstAttribute="top" secondItem="nOc-gw-DHl" secondAttribute="bottom" id="fYh-Xp-xZ3"/>
                                     <constraint firstItem="e7y-fE-b2S" firstAttribute="leading" secondItem="7mE-L9-BV7" secondAttribute="leading" id="oF3-gf-kH0"/>
+                                    <constraint firstItem="e7y-fE-b2S" firstAttribute="leading" secondItem="7mE-L9-BV7" secondAttribute="leading" id="oip-bw-HYq"/>
                                     <constraint firstItem="nOc-gw-DHl" firstAttribute="leading" secondItem="7mE-L9-BV7" secondAttribute="leading" id="ozB-gN-eLc"/>
                                     <constraint firstItem="nOc-gw-DHl" firstAttribute="top" secondItem="7mE-L9-BV7" secondAttribute="top" id="qq2-Gi-ycV"/>
+                                    <constraint firstItem="e7y-fE-b2S" firstAttribute="top" secondItem="nOc-gw-DHl" secondAttribute="bottom" id="sq6-13-7pS"/>
                                     <constraint firstAttribute="trailing" secondItem="nOc-gw-DHl" secondAttribute="trailing" id="zkL-rk-fJJ"/>
                                 </constraints>
                             </stackView>
@@ -403,6 +406,7 @@
                         <outlet property="btnHeightConstraint" destination="Yuh-lj-Dxn" id="PiP-kl-xjn"/>
                         <outlet property="btnMessage" destination="0xJ-5v-IR8" id="BA3-MZ-Yg6"/>
                         <outlet property="email" destination="FSy-ZV-Xqo" id="Uds-vf-F3X"/>
+                        <outlet property="gradientView" destination="e7y-fE-b2S" id="TvU-9d-AeB"/>
                         <outlet property="mobile" destination="KXs-OB-lMt" id="tuL-ce-hSG"/>
                         <outlet property="name" destination="CyM-H4-sa1" id="veF-pa-mhd"/>
                         <outlet property="profilePicture" destination="7F4-fX-svu" id="Tdw-LW-k7W"/>

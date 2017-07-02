@@ -20,6 +20,7 @@ class ContactDetailView: UIViewController {
     @IBOutlet weak var mobile: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var gradientView: UIView!
     
     var hud: HUD = HUD()
     var uiViewUtilities: UIViewUtilities = UIViewUtilities()
@@ -28,16 +29,20 @@ class ContactDetailView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidLoad()
+        btnHeightConstraint.constant = btnMessage.frame.width
         
+        print("btnHeightConstraint.constant: \(btnHeightConstraint.constant)")
+        print("btnMessage.frame.width: \(btnMessage.frame.width)")
+        
+        presenter?.viewDidLoad()
         self.navigationController?.navigationBar.backItem?.title = "Contact"
         let edit = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         self.navigationItem.rightBarButtonItem = edit
         self.navigationController?.navigationBar.tintColor = colorUtilities.colorFromHex(hex: "#50E3C2")
         self.navigationController?.view.backgroundColor = UIColor.white
         
-        btnHeightConstraint.constant = btnMessage.frame.width
         uiViewUtilities.circleView(views: profilePicture, btnMessage, btnCall, btnEmail, btnFavorite)
+        uiViewUtilities.setGradientBackground(topColor: "#FFFFFF", bottomColor: "#50E3C2", uiView: gradientView)
     }
     
     func editTapped(sender: UIBarButtonItem) {
@@ -75,6 +80,7 @@ extension ContactDetailView: ContactDetailViewProtocol {
         let url = URL(string: (contact.first?.profilePicture)!)!
         let placeholderImage = UIImage(named: "user")!
         profilePicture?.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        uiViewUtilities.borderView(views: profilePicture, borderWidth: 3, color: UIColor.white)
     }
     
     func showError(errorMessage: String) {
@@ -87,5 +93,15 @@ extension ContactDetailView: ContactDetailViewProtocol {
     
     func hideLoading() {
         hud.hideActivityIndicator(uiView: self.view)
+    }
+}
+
+extension UIView {
+    func addGradientWithColor(color: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [UIColor.clear.cgColor, color.cgColor]
+        
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }
