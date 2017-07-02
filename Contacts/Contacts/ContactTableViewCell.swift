@@ -14,6 +14,8 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var favorite: UIImageView!
+    
+    var uiViewUtilities: UIViewUtilities = UIViewUtilities()
 
     func set(forContact contact: ContactModel) {
         self.selectionStyle = .none
@@ -23,8 +25,8 @@ class ContactTableViewCell: UITableViewCell {
         } else {
             favorite.isHidden = false
         }
-        profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
-        profilePicture.clipsToBounds = true
+        
+        uiViewUtilities.circleView(views: profilePicture)
         
         let url = URL(string: contact.profilePicture)!
         let placeholderImage = UIImage(named: "user")!

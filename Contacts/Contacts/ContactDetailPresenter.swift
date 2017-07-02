@@ -17,9 +17,6 @@ class ContactDetailPresenter: ContactDetailPresenterProtocol {
     
     func viewDidLoad() {
         view?.showLoading()
-        
-        print("this is contact: \(contact)")
-        
         interactor?.retrieveContactById(id: (contact?.id)!)
     }
     

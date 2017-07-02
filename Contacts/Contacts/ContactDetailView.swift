@@ -22,7 +22,8 @@ class ContactDetailView: UIViewController {
     @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
     
     var hud: HUD = HUD()
-    var uiView: UIView = UIView()
+    var uiViewUtilities: UIViewUtilities = UIViewUtilities()
+    var colorUtilities: ColorUtilities = ColorUtilities()
     var presenter: ContactDetailPresenterProtocol?
     
     override func viewDidLoad() {
@@ -32,41 +33,15 @@ class ContactDetailView: UIViewController {
         self.navigationController?.navigationBar.backItem?.title = "Contact"
         let edit = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         self.navigationItem.rightBarButtonItem = edit
-        self.navigationController?.navigationBar.tintColor = colorFromHex(hex: "#50E3C2")
+        self.navigationController?.navigationBar.tintColor = colorUtilities.colorFromHex(hex: "#50E3C2")
         self.navigationController?.view.backgroundColor = UIColor.white
         
         btnHeightConstraint.constant = btnMessage.frame.width
-        circleView(views: profilePicture, btnMessage, btnCall, btnEmail, btnFavorite)
+        uiViewUtilities.circleView(views: profilePicture, btnMessage, btnCall, btnEmail, btnFavorite)
     }
     
     func editTapped(sender: UIBarButtonItem) {
         print("Edit")
-    }
-    
-    func circleView(views: UIView...) {
-        for view: UIView in views {
-            view.layer.cornerRadius = view.frame.size.width / 2
-            view.clipsToBounds = true
-        }
-    }
-    
-    func colorFromHex (hex: String) -> UIColor {
-        var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        if ((cString.characters.count) != 6) {
-            print("Color haven't pager character")
-            return UIColor.gray
-        }
-        var rgbValue: UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 
     @IBAction func btnMessageOnClick(_ sender: Any) {

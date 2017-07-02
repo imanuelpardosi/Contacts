@@ -41,7 +41,7 @@ class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol 
         do {
             let results = try managedOC.fetch(request as! NSFetchRequest<NSFetchRequestResult>) as! [Contact]
             if results.count != 0{
-                var managedObject = results[0]
+                let managedObject = results[0]
                 managedObject.setValue(email, forKey: "email")
                 managedObject.setValue(phoneNumber, forKey: "phoneNumber")
                 
