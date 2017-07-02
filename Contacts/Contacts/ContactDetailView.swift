@@ -46,7 +46,9 @@ class ContactDetailView: UIViewController {
     }
     
     func editTapped(sender: UIBarButtonItem) {
-        print("Edit")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddEditContactView") as! UIViewController
+        self.navigationController!.pushViewController(vc, animated: true)
     }
 
     @IBAction func btnMessageOnClick(_ sender: Any) {
@@ -93,15 +95,5 @@ extension ContactDetailView: ContactDetailViewProtocol {
     
     func hideLoading() {
         hud.hideActivityIndicator(uiView: self.view)
-    }
-}
-
-extension UIView {
-    func addGradientWithColor(color: UIColor) {
-        let gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = [UIColor.clear.cgColor, color.cgColor]
-        
-        self.layer.insertSublayer(gradient, at: 0)
     }
 }

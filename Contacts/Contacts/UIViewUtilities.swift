@@ -41,7 +41,7 @@ class UIViewUtilities {
         let color1 = colorUtilities.colorFromHex(hex: topColor)
         let color2 = colorUtilities.colorFromHex(hex: bottomColor).withAlphaComponent(0.28)
         
-        gradientLayer.colors = [color1.withAlphaComponent(0.5).cgColor, color2.withAlphaComponent(0.5).cgColor]
+        gradientLayer.colors = [color1.cgColor, color2.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         
         uiView.layer.insertSublayer(gradientLayer, at: 0)
