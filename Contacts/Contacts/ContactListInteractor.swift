@@ -48,7 +48,7 @@ extension ContactListInteractor: ContactListRemoteDataManagerOutputProtocol {
         }
     }
     
-    func onError() {
-        presenter?.onError()
+    func onError(errorMessage: String) {
+        presenter?.onError(errorMessage: errorMessage)
     }
 }

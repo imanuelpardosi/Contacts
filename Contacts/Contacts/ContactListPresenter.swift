@@ -30,8 +30,8 @@ extension ContactListPresenter: ContactListInteractorOutputProtocol {
         view?.showPosts(with: contacts)
     }
     
-    func onError() {
+    func onError(errorMessage: String) {
         view?.hideLoading()
-        view?.showError()
+        view?.showError(errorMessage: errorMessage)
     }
 }

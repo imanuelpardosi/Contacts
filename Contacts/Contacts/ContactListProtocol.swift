@@ -15,7 +15,7 @@ protocol ContactListViewProtocol: class {
     
     // PRESENTER -> VIEW
     func showPosts(with contacts: [ContactModel])
-    func showError()
+    func showError(errorMessage: String)
     func showLoading()
     func hideLoading()
 }
@@ -40,7 +40,7 @@ protocol ContactListPresenterProtocol: class {
 protocol ContactListInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
     func didRetrieveContacts(_ contacts: [ContactModel])
-    func onError()
+    func onError(errorMessage: String)
 }
 
 protocol ContactListInteractorInputProtocol: class {
@@ -62,7 +62,7 @@ protocol ContactListRemoteDataManagerInputProtocol: class {
 protocol ContactListRemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> INTERACTOR
     func onContactsRetrieved(_ contacts: [ContactModel])
-    func onError()
+    func onError(errorMessage: String)
 }
 
 protocol ContactListLocalDataManagerInputProtocol: class {

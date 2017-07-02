@@ -12,6 +12,7 @@ import CoreData
 class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol {
 
     func retrieveContactById(id: Int) throws -> [Contact] {
+        print("ContactDetailLocalDataManager")
         guard let managedOC = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }
@@ -33,14 +34,21 @@ class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol 
         guard let managedOC = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }
+        let request: NSFetchRequest<Contact> = NSFetchRequest(entityName: String(describing: Contact.self))
+        let predicate = NSPredicate(format: "id = \(id)")
+        request.predicate = predicate
         
-        if let newContact = NSEntityDescription.entity(forEntityName: "Contact", in: managedOC) {
-            let contact = Contact(entity: newContact, insertInto: managedOC)
-            contact.id = Int32(id)
-           
-            contact.email = email
-            contact.phoneNumber = phoneNumber
-            try managedOC.save()
+        do {
+            let results = try managedOC.fetch(request as! NSFetchRequest<NSFetchRequestResult>) as! [Contact]
+            if results.count != 0{
+                var managedObject = results[0]
+                managedObject.setValue(email, forKey: "email")
+                managedObject.setValue(phoneNumber, forKey: "phoneNumber")
+                
+                try managedOC.save()
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
         
         throw PersistenceError.couldNotSaveObject

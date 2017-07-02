@@ -15,39 +15,31 @@ class ContactDetailInteractor: ContactDetailInteractorInputProtocol {
     
     func retrieveContactById(id: Int) {
         do {
-            print("check local data")
+            print("check local data detail")
             
             if let contactById = try localDatamanager?.retrieveContactById(id: id) {
-
-                if contactById.isEmpty {
-                    print("empty")
-                } else if (contactById.first?.phoneNumber?.isEmpty)! {
-                    print("contactnya: \(contactById.first?.phoneNumber)")
+                let contactModelById = contactById.map() {
+                    return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!, email: $0.email!, phoneNumber: $0.phoneNumber!)
                 }
+                if contactModelById.isEmpty {
+                    remoteDatamanager?.retrieveContactById(id: id)
+                } else if (contactModelById.first?.phoneNumber.isEmpty)! {
+                    remoteDatamanager?.retrieveContactById(id: id)
+                } else {
+                    presenter?.didRetrieveDetail(contactModelById)
+                }
+            } else {
+                remoteDatamanager?.retrieveContactById(id: id)
             }
-            
-            
-//            if let contactList = try localDatamanager?.retrieveContactList() {
-//                let contactModelList = contactList.map() {
-//                    return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!, email: $0.email!, phoneNumber: $0.phoneNumber!)
-//                }
-//                if contactModelList.isEmpty {
-//                    remoteDatamanager?.retrieveContactList()
-//                } else {
-//                    presenter?.didRetrieveContacts(contactModelList)
-//                }
-//            } else {
-//                remoteDatamanager?.retrieveContactList()
-//            }
         } catch {
-            presenter?.didRetrieveContacts([])
+            presenter?.didRetrieveDetail([])
         }
     }
 }
 
 extension ContactDetailInteractor: ContactDetailRemoteDataManagerOutputProtocol {
     func onContactsRetrieved(_ contacts: [ContactModel]) {
-        presenter?.didRetrieveContacts(contacts)
+        presenter?.didRetrieveDetail(contacts)
         
         for contactModel in contacts {
             do {
@@ -58,7 +50,7 @@ extension ContactDetailInteractor: ContactDetailRemoteDataManagerOutputProtocol 
         }
     }
     
-    func onError() {
-        presenter?.onError()
+    func onError(errorMessage: String) {
+        presenter?.onError(errorMessage: errorMessage)
     }
 }

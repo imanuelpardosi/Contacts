@@ -23,14 +23,13 @@ class ContactListRemoteDataManager: ContactListRemoteDataManagerInputProtocol {
                     print("contacts: \(contacts)")
                     self.remoteRequestHandler?.onContactsRetrieved(contacts)
                     
-                case .failure( _):
-                    self.remoteRequestHandler?.onError()
+                case .failure(let error):
+                    self.remoteRequestHandler?.onError(errorMessage: error.localizedDescription)
                 }
             })
     }
     
     func retrieveUser(id: Int) {
-        
         Alamofire.request("Endpoints.User.fetch.url/\(id).json", method: .get)
             .validate()
             .responseArray(completionHandler: { (response: DataResponse<[ContactModel]>) in
@@ -39,8 +38,8 @@ class ContactListRemoteDataManager: ContactListRemoteDataManagerInputProtocol {
                     print("contacts: \(contacts)")
                     self.remoteRequestHandler?.onContactsRetrieved(contacts)
                     
-                case .failure( _):
-                    self.remoteRequestHandler?.onError()
+                case .failure(let error):
+                    self.remoteRequestHandler?.onError(errorMessage: error.localizedDescription)
                 }
             })
     }

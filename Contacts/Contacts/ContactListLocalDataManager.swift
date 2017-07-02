@@ -11,13 +11,11 @@ import CoreData
 
 class ContactListLocalDataManager: ContactListLocalDataManagerInputProtocol {
     func retrieveContactList() throws -> [Contact] {
-        print("what : \(Contact.self)")
         guard let managedOC = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }
         
         let request: NSFetchRequest<Contact> = NSFetchRequest(entityName: String(describing: Contact.self))
-        
         
         return try managedOC.fetch(request)
     }

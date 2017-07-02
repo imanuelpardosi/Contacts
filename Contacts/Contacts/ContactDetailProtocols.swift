@@ -13,28 +13,35 @@ protocol ContactDetailViewProtocol: class {
     var presenter: ContactDetailPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
-    func showContactDetail(forContact contact: ContactModel)
+    func showContactDetail(forContact contact: [ContactModel])
+    func showError(errorMessage: String)
+    func showLoading()
+    func hideLoading()
 }
 
 protocol ContactDetailWireFrameProtocol: class {
     static func createContactDetailModule(forContact contact: ContactModel) -> UIViewController
+    
+    func presentEditContactScreen(from view: ContactDetailViewProtocol, forContact contact: ContactModel)
 }
 
 protocol ContactDetailPresenterProtocol: class {
     var view: ContactDetailViewProtocol? { get set }
+    var interactor: ContactDetailInteractorInputProtocol? { get set }
     var wireFrame: ContactDetailWireFrameProtocol? { get set }
     var contact: ContactModel? { get set }
     
     // VIEW -> PRESENTER
     func viewDidLoad()
+    func showEditContact(forContact contact: ContactModel)
+
 }
 
 protocol ContactDetailInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
-    func didRetrieveContacts(_ contacts: [ContactModel])
-    func onError()
+    func didRetrieveDetail(_ contacts: [ContactModel])
+    func onError(errorMessage: String)
 }
-
 
 protocol ContactDetailInteractorInputProtocol: class {
     var presenter: ContactDetailInteractorOutputProtocol? { get set }
@@ -55,7 +62,7 @@ protocol ContactDetailRemoteDataManagerInputProtocol: class {
 protocol ContactDetailRemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> INTERACTOR
     func onContactsRetrieved(_ contacts: [ContactModel])
-    func onError()
+    func onError(errorMessage: String)
 }
 
 protocol ContactDetailLocalDataManagerInputProtocol: class {

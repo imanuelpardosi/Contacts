@@ -33,6 +33,6 @@ extension ContactModel: Mappable {
         favorite <- map["favorite"]
         url <- map["url"]
         email <- map["email"]
-        phoneNumber <- map["phoneNumber"]
+        phoneNumber <- map["phone_number"]
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 class ContactListView: UIViewController {
     @IBOutlet weak var contactTable: UITableView!
-    
+    var hud: HUD = HUD()
     var presenter: ContactListPresenterProtocol?
     var contactList: [ContactModel] = []
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -64,20 +64,21 @@ extension ContactListView: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ContactListView: ContactListViewProtocol {
+    
     func showPosts(with contacts: [ContactModel]) {
         contactList = contacts
         contactTable.reloadData()
     }
     
-    func showError() {
-        print("Internet not connected")
+    func showError(errorMessage: String) {
+        hud.showError(message: errorMessage, uiView: self)
     }
     
     func showLoading() {
-        print("Loading...")
+        hud.showActivityIndicator(uiView: self.view)
     }
     
     func hideLoading() {
-        print("Hide Loading")
+        hud.hideActivityIndicator(uiView: self.view)
     }
 }

@@ -21,6 +21,8 @@ class ContactDetailView: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
     
+    var hud: HUD = HUD()
+    var uiView: UIView = UIView()
     var presenter: ContactDetailPresenterProtocol?
     
     override func viewDidLoad() {
@@ -86,12 +88,29 @@ class ContactDetailView: UIViewController {
 
 extension ContactDetailView: ContactDetailViewProtocol {
     
-    func showContactDetail(forContact contact: ContactModel) {
-        name.text = "\(contact.firstName) \(contact.lastName)"
+    func showContactDetail(forContact contact: [ContactModel]) {
         
-        let url = URL(string: contact.profilePicture)!
+        print("whut: \(contact)")
+        
+        let fullName = (contact.first?.firstName)! + " " + (contact.first?.lastName)!
+        name.text = fullName
+        email.text = contact.first?.email
+        mobile.text = contact.first?.phoneNumber
+        
+        let url = URL(string: (contact.first?.profilePicture)!)!
         let placeholderImage = UIImage(named: "user")!
         profilePicture?.af_setImage(withURL: url, placeholderImage: placeholderImage)
     }
     
+    func showError(errorMessage: String) {
+        hud.showError(message: errorMessage, uiView: self)
+    }
+    
+    func showLoading() {
+        hud.showActivityIndicator(uiView: self.view)
+    }
+    
+    func hideLoading() {
+        hud.hideActivityIndicator(uiView: self.view)
+    }
 }

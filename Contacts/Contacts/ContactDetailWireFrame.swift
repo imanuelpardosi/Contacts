@@ -11,16 +11,32 @@ import UIKit
 
 class ContactDetailWireFrame: ContactDetailWireFrameProtocol {
     
+    func presentEditContactScreen(from view: ContactDetailViewProtocol, forContact contact: ContactModel) {
+//        let editContactViewController = EditContactWireFrame.createEditContactModule(forContact: contact)
+//        
+//        if let sourceView = view as? UIViewController {
+//            sourceView.navigationController?.pushViewController(editContactViewController, animated: true)
+//        }
+    }
+    
     class func createContactDetailModule(forContact contact: ContactModel) -> UIViewController {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ContactDetailController")
         if let view = viewController as? ContactDetailView {
-            let presenter: ContactDetailPresenterProtocol = ContactDetailPresenter()
+            let presenter: ContactDetailPresenterProtocol & ContactDetailInteractorOutputProtocol = ContactDetailPresenter()
+            let interactor: ContactDetailInteractorInputProtocol & ContactDetailRemoteDataManagerOutputProtocol = ContactDetailInteractor()
+            let localDataManager: ContactDetailLocalDataManagerInputProtocol = ContactDetailLocalDataManager()
+            let remoteDataManager: ContactDetailRemoteDataManagerInputProtocol = ContactDetailRemoteDataManager()
             let wireFrame: ContactDetailWireFrameProtocol = ContactDetailWireFrame()
             
             view.presenter = presenter
             presenter.view = view
             presenter.contact = contact
             presenter.wireFrame = wireFrame
+            presenter.interactor = interactor
+            interactor.presenter = presenter
+            interactor.localDatamanager = localDataManager
+            interactor.remoteDatamanager = remoteDataManager
+            remoteDataManager.remoteRequestHandler = interactor
             
             return viewController
         }

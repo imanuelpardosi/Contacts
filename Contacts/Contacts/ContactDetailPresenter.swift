@@ -11,12 +11,31 @@ import Foundation
 class ContactDetailPresenter: ContactDetailPresenterProtocol {
     
     weak var view: ContactDetailViewProtocol?
+    var interactor: ContactDetailInteractorInputProtocol?
     var wireFrame: ContactDetailWireFrameProtocol?
     var contact: ContactModel?
     
     func viewDidLoad() {
-        view?.showContactDetail(forContact: contact!)
+        view?.showLoading()
+        
+        print("this is contact: \(contact)")
+        
+        interactor?.retrieveContactById(id: (contact?.id)!)
     }
     
+    func showEditContact(forContact contact: ContactModel) {
+        wireFrame?.presentEditContactScreen(from: view!, forContact: contact)
+    }
 }
 
+extension ContactDetailPresenter: ContactDetailInteractorOutputProtocol {
+    func didRetrieveDetail(_ contacts: [ContactModel]) {
+        view?.hideLoading()
+        view?.showContactDetail(forContact: contacts)
+    }
+    
+    func onError(errorMessage: String) {
+        view?.hideLoading()
+        view?.showError(errorMessage: errorMessage)
+    }
+}
