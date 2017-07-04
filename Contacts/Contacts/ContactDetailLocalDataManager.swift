@@ -12,7 +12,6 @@ import CoreData
 class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol {
 
     func retrieveContactById(id: Int) throws -> [Contact] {
-        print("ContactDetailLocalDataManager")
         guard let managedOC = CoreDataStore.managedObjectContext else {
             throw PersistenceError.managedObjectContextNotFound
         }

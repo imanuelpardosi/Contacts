@@ -15,17 +15,11 @@ class ContactDetailRemoteDataManager: ContactDetailRemoteDataManagerInputProtoco
     ContactDetailRemoteDataManagerOutputProtocol?
     
     func retrieveContactById(id: Int) {
-        print("ContactDetailRemoteDataManager")
-        
-        print("URL: \(Endpoints.User.fetch.url)")
-        print("id: \(id).json")
         Alamofire.request("\(Endpoints.User.fetch.url)/\(id).json", method: .get)
             .validate()
             .responseObject(completionHandler: { (response: DataResponse<ContactModel>) in
-                print("response: \(response)")
                 switch response.result {
                 case .success(let contacts):
-                    print("contacts: \(contacts)")
                     self.remoteRequestHandler?.onContactsRetrieved([contacts])
                     
                 case .failure(let err):

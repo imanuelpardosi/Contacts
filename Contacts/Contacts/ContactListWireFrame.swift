@@ -11,7 +11,8 @@ import UIKit
 
 class ContactListWireFrame: ContactListWireFrameProtocol {
     func presentAddContactScreen(from view: ContactListViewProtocol) {
-        let addContactViewController = AddEditContactWireFrame.createAddContactModule()
+        let contact: ContactModel = ContactModel()
+        let addContactViewController = AddEditContactWireFrame.createAddContactModule(forContact: contact, method: "Add")
         
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(addContactViewController, animated: true)

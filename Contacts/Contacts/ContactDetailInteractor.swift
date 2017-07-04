@@ -15,8 +15,6 @@ class ContactDetailInteractor: ContactDetailInteractorInputProtocol {
     
     func retrieveContactById(id: Int) {
         do {
-            print("check local data detail")
-            
             if let contactById = try localDatamanager?.retrieveContactById(id: id) {
                 let contactModelById = contactById.map() {
                     return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!, email: $0.email!, phoneNumber: $0.phoneNumber!)

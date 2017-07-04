@@ -20,7 +20,6 @@ class ContactListRemoteDataManager: ContactListRemoteDataManagerInputProtocol {
             .responseArray(completionHandler: { (response: DataResponse<[ContactModel]>) in
                 switch response.result {
                 case .success(let contacts):
-                    print("contacts: \(contacts)")
                     self.remoteRequestHandler?.onContactsRetrieved(contacts)
                     
                 case .failure(let error):
@@ -35,7 +34,6 @@ class ContactListRemoteDataManager: ContactListRemoteDataManagerInputProtocol {
             .responseArray(completionHandler: { (response: DataResponse<[ContactModel]>) in
                 switch response.result {
                 case .success(let contacts):
-                    print("contacts: \(contacts)")
                     self.remoteRequestHandler?.onContactsRetrieved(contacts)
                     
                 case .failure(let error):

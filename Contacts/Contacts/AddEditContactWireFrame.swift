@@ -19,30 +19,7 @@ class AddEditContactWireFrame: AddEditContactWireFrameProtocol {
         }
     }
     
-    class func createAddContactModule() -> UIViewController {
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "AddEditContactView")
-        if let view = viewController as? AddEditContactView {
-            let presenter: AddEditContactPresenterProtocol & AddEditContactInteractorOutputProtocol = AddEditContactPresenter()
-            let interactor: AddEditContactInteractorInputProtocol & AddEditContactRemoteDataManagerOutputProtocol = AddEditContactInteractor()
-            let localDataManager: AddEditContactLocalDataManagerInputProtocol = AddEditContactLocalDataManager()
-            let remoteDataManager: AddEditContactRemoteDataManagerInputProtocol = AddEditContactRemoteDataManager()
-            let wireFrame: AddEditContactWireFrameProtocol = AddEditContactWireFrame()
-            
-            view.presenter = presenter
-            presenter.view = view
-            presenter.wireFrame = wireFrame
-            presenter.interactor = interactor
-            interactor.presenter = presenter
-            interactor.localDatamanager = localDataManager
-            interactor.remoteDatamanager = remoteDataManager
-            remoteDataManager.remoteRequestHandler = interactor
-            
-            return viewController
-        }
-        return UIViewController()
-    }
-    
-    class func createEditContactModule(forContact contact: ContactModel) -> UIViewController {
+    class func createAddContactModule(forContact contact: ContactModel, method: String) -> UIViewController {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "AddEditContactView")
         if let view = viewController as? AddEditContactView {
             let presenter: AddEditContactPresenterProtocol & AddEditContactInteractorOutputProtocol = AddEditContactPresenter()
@@ -56,6 +33,32 @@ class AddEditContactWireFrame: AddEditContactWireFrameProtocol {
             presenter.contact = contact
             presenter.wireFrame = wireFrame
             presenter.interactor = interactor
+            presenter.method = method
+            interactor.presenter = presenter
+            interactor.localDatamanager = localDataManager
+            interactor.remoteDatamanager = remoteDataManager
+            remoteDataManager.remoteRequestHandler = interactor
+            
+            return viewController
+        }
+        return UIViewController()
+    }
+    
+    class func createEditContactModule(forContact contact: ContactModel, method: String) -> UIViewController {
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "AddEditContactView")
+        if let view = viewController as? AddEditContactView {
+            let presenter: AddEditContactPresenterProtocol & AddEditContactInteractorOutputProtocol = AddEditContactPresenter()
+            let interactor: AddEditContactInteractorInputProtocol & AddEditContactRemoteDataManagerOutputProtocol = AddEditContactInteractor()
+            let localDataManager: AddEditContactLocalDataManagerInputProtocol = AddEditContactLocalDataManager()
+            let remoteDataManager: AddEditContactRemoteDataManagerInputProtocol = AddEditContactRemoteDataManager()
+            let wireFrame: AddEditContactWireFrameProtocol = AddEditContactWireFrame()
+            
+            view.presenter = presenter
+            presenter.view = view
+            presenter.contact = contact
+            presenter.wireFrame = wireFrame
+            presenter.interactor = interactor
+            presenter.method = method
             interactor.presenter = presenter
             interactor.localDatamanager = localDataManager
             interactor.remoteDatamanager = remoteDataManager

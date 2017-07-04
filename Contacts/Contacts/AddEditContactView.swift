@@ -35,11 +35,18 @@ class AddEditContactView: UIViewController {
         self.navigationItem.rightBarButtonItem = doneItem
         self.navigationController?.navigationBar.tintColor = colorUtilities.colorFromHex(hex: "#50E3C2")
         self.navigationController?.view.backgroundColor = UIColor.white
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
     
     func doneTapped() {
         showLoading()
-        presenter?.updateContact(id: id, firstName: firstName.text!, lastName: lastName.text!, phoneNumber: mobile.text!, email: email.text!)
+        if presenter?.method == "Edit" {
+            presenter?.updateContact(id: id, firstName: firstName.text!, lastName: lastName.text!, phoneNumber: mobile.text!, email: email.text!)
+        } else {
+            presenter?.addContact(id: id, firstName: firstName.text!, lastName: lastName.text!, phoneNumber: mobile.text!, email: email.text!)
+        }
+        
     }
 }
 

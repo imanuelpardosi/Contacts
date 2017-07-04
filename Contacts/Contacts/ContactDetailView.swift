@@ -54,11 +54,9 @@ class ContactDetailView: UIViewController {
     
     func backTapped() {
         presenter?.showContactList()
-        print("show contact list")
     }
     
     func editTapped(sender: UIBarButtonItem) {
-        print("get contact: \(getContact)")
         presenter?.showEditContact(forContact: getContact)
     }
 
@@ -83,14 +81,16 @@ extension ContactDetailView: ContactDetailViewProtocol {
     
     func showContactDetail(forContact contact: [ContactModel]) {
         getContact = contact.first!
+        
         let fullName = (contact.first?.firstName)! + " " + (contact.first?.lastName)!
         name.text = fullName
         email.text = contact.first?.email
         mobile.text = contact.first?.phoneNumber
         
-        let url = URL(string: (contact.first?.profilePicture)!)!
         let placeholderImage = UIImage(named: "user")!
-        profilePicture?.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        let profilePictureUrl = URL(string: (contact.first?.profilePicture)!)
+        profilePicture?.af_setImage(withURL: profilePictureUrl!, placeholderImage: placeholderImage)
+        
         uiViewUtilities.borderView(views: profilePicture, borderWidth: 3, color: UIColor.white)
     }
     

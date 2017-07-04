@@ -12,7 +12,7 @@ import UIKit
 class ContactDetailWireFrame: ContactDetailWireFrameProtocol {
     
     func presentEditContactScreen(from view: ContactDetailViewProtocol, forContact contact: ContactModel) {
-        let editContactViewController = AddEditContactWireFrame.createEditContactModule(forContact: contact)
+        let editContactViewController = AddEditContactWireFrame.createEditContactModule(forContact: contact, method: "Edit")
         
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(editContactViewController, animated: true)

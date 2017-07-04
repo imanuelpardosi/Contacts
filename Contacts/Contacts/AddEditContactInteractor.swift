@@ -16,16 +16,26 @@ class AddEditContactInteractor: AddEditContactInteractorInputProtocol {
     func updateContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String) {
         remoteDatamanager?.updateContact(id: id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, email: email)
     }
+    
+    func addContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String) {
+        remoteDatamanager?.addContact(id: id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, email: email)
+    }
 }
 
 extension AddEditContactInteractor: AddEditContactRemoteDataManagerOutputProtocol {
-    
-    func onError(errorMessage: String) {
-        presenter?.onError(errorMessage: errorMessage)
+    func onContactAdded(_ contacts: [ContactModel]) {
+        presenter?.didAddEditContact(contacts)
+        for contactModel in contacts {
+            do {
+                try localDatamanager?.addContact(id: contactModel.id, firstName: contactModel.firstName, lastName: contactModel.lastName, favorite: contactModel.favorite, profilePicture: contactModel.profilePicture, email: contactModel.email, phoneNumber: contactModel.phoneNumber)
+            } catch {
+                
+            }
+        }
     }
     
     func onContactEdited(_ contacts: [ContactModel]) {
-        presenter?.didEditContact(contacts)
+        presenter?.didAddEditContact(contacts)
         for contactModel in contacts {
             do {
                 try localDatamanager?.updateContact(id: contactModel.id, firstName: contactModel.firstName, lastName: contactModel.lastName, favorite: contactModel.favorite, profilePicture: contactModel.profilePicture, email: contactModel.email, phoneNumber: contactModel.phoneNumber)
@@ -34,4 +44,9 @@ extension AddEditContactInteractor: AddEditContactRemoteDataManagerOutputProtoco
             }
         }
     }
+    
+    func onError(errorMessage: String) {
+        presenter?.onError(errorMessage: errorMessage)
+    }
+
 }

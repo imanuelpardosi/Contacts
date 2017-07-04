@@ -15,8 +15,6 @@ class ContactListInteractor: ContactListInteractorInputProtocol {
     
     func retrieveContactList() {
         do {
-            print("check local data")
-    
             if let contactList = try localDatamanager?.retrieveContactList() {
                 let contactModelList = contactList.map() {
                     return ContactModel(id: Int($0.id), firstName: $0.firstName!.capitalized, lastName: $0.lastName!.capitalized, profilePicture: $0.profilePicture!, favorite: $0.favorite, url: $0.url!, email: $0.email!, phoneNumber: $0.phoneNumber!)

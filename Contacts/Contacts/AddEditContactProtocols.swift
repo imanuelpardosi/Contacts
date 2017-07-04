@@ -20,8 +20,8 @@ protocol AddEditContactViewProtocol: class {
 }
 
 protocol AddEditContactWireFrameProtocol: class {
-    static func createAddContactModule() -> UIViewController
-    static func createEditContactModule(forContact contact: ContactModel) -> UIViewController
+    static func createAddContactModule(forContact contact: ContactModel, method: String) -> UIViewController
+    static func createEditContactModule(forContact contact: ContactModel, method: String) -> UIViewController
     
     func presentContactDetailScreen(from view: AddEditContactView, forContact contact: ContactModel)
 }
@@ -31,18 +31,20 @@ protocol AddEditContactPresenterProtocol: class {
     var interactor: AddEditContactInteractorInputProtocol? { get set }
     var wireFrame: AddEditContactWireFrameProtocol? { get set }
     var contact: ContactModel? { get set }
+    var method: String? { get set }
     
     // VIEW -> PRESENTER
     func viewDidLoad()
     func showContactDetail(forContact contact: ContactModel)
     func updateContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
+    func addContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
 }
 
 protocol AddEditContactInteractorOutputProtocol: class {
     // INTERACTOR -> PRESENTER
     func showAddEditContact(_ contacts: [ContactModel])
     func onError(errorMessage: String)
-    func didEditContact(_ contacts: [ContactModel])
+    func didAddEditContact(_ contacts: [ContactModel])
 }
 
 protocol AddEditContactInteractorInputProtocol: class {
@@ -51,7 +53,7 @@ protocol AddEditContactInteractorInputProtocol: class {
     var remoteDatamanager: AddEditContactRemoteDataManagerInputProtocol? { get set }
     
     // PRESENTER -> INTERACTOR
-    //func retrieveContactById(id: Int)
+    func addContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
     func updateContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
 }
 
@@ -61,6 +63,7 @@ protocol AddEditContactRemoteDataManagerInputProtocol: class {
     // INTERACTOR -> REMOTEDATAMANAGER
     //func retrieveContactById(id: Int)
     func updateContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
+    func addContact(id: Int, firstName: String, lastName: String, phoneNumber: String, email: String)
 }
 
 protocol AddEditContactRemoteDataManagerOutputProtocol: class {
@@ -68,10 +71,11 @@ protocol AddEditContactRemoteDataManagerOutputProtocol: class {
     //func onContactsRetrieved(_ contacts: [ContactModel])
     func onError(errorMessage: String)
     func onContactEdited(_ contacts: [ContactModel])
+    func onContactAdded(_ contacts: [ContactModel])
 }
 
 protocol AddEditContactLocalDataManagerInputProtocol: class {
     // INTERACTOR -> LOCALDATAMANAGER
-    //func retrieveContactById(id: Int) throws -> [Contact]
+    func addContact(id: Int, firstName: String, lastName: String, favorite: Bool, profilePicture: String, email: String, phoneNumber: String) throws
     func updateContact(id: Int, firstName: String, lastName: String, favorite: Bool, profilePicture: String, email: String, phoneNumber: String) throws
 }
