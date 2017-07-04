@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B6DD2B1C4B4AF7A13EDD9A86 /* Pods_ContactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037C51E9502157EF13E640F6 /* Pods_ContactsUITests.framework */; };
 		C118AF1E29571172ECB19C2D /* Pods_ContactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BBBF87E31453BCD395F10F /* Pods_ContactsTests.framework */; };
+		DB11A5A31F0A2ABA00971AF8 /* AddEditContactWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB11A5A21F0A2ABA00971AF8 /* AddEditContactWireFrame.swift */; };
+		DB15330C1F0A74D100D87839 /* AddEditContactInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15330B1F0A74D100D87839 /* AddEditContactInteractor.swift */; };
+		DB15330E1F0A817B00D87839 /* AddEditContactLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15330D1F0A817B00D87839 /* AddEditContactLocalDataManager.swift */; };
+		DB1533101F0A81C600D87839 /* AddEditContactRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15330F1F0A81C600D87839 /* AddEditContactRemoteDataManager.swift */; };
 		DB15C5E01F064A5900F0D7C1 /* ContactDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5DF1F064A5900F0D7C1 /* ContactDetailInteractor.swift */; };
 		DB15C5E41F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5E31F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift */; };
 		DB15C5E61F064B0700F0D7C1 /* ContactDetailLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15C5E51F064B0600F0D7C1 /* ContactDetailLocalDataManager.swift */; };
@@ -37,6 +41,8 @@
 		DB904C4E1F04B06E00A656F4 /* ContactListLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB904C4D1F04B06E00A656F4 /* ContactListLocalDataManager.swift */; };
 		DB9206461F0408890063B3D6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9206451F0408890063B3D6 /* CoreDataStore.swift */; };
 		DBBB6C2A1F03BEA4007A11FC /* ContactListRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB6C291F03BEA4007A11FC /* ContactListRemoteDataManager.swift */; };
+		DBC246E31F0A5974007E1A38 /* AddEditContactProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC246E21F0A5974007E1A38 /* AddEditContactProtocols.swift */; };
+		DBC246E51F0A5BE2007E1A38 /* AddEditContactPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC246E41F0A5BE2007E1A38 /* AddEditContactPresenter.swift */; };
 		DBE1D9901F03694F00AC3580 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1D98F1F03694F00AC3580 /* Endpoint.swift */; };
 		DBE1D9921F0371D300AC3580 /* PersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1D9911F0371D300AC3580 /* PersistenceError.swift */; };
 		DBF3F7FE1F03C7F4009C3E83 /* ContactListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF3F7FD1F03C7F4009C3E83 /* ContactListProtocol.swift */; };
@@ -71,6 +77,10 @@
 		8F1F3421D97C377D3D5F801A /* Pods-ContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ContactsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ContactsUITests/Pods-ContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9F82493D4F6B33BED284354 /* Pods-Contacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.debug.xcconfig"; sourceTree = "<group>"; };
 		D13AA8905CD29DB232801CA0 /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
+		DB11A5A21F0A2ABA00971AF8 /* AddEditContactWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactWireFrame.swift; sourceTree = "<group>"; };
+		DB15330B1F0A74D100D87839 /* AddEditContactInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactInteractor.swift; sourceTree = "<group>"; };
+		DB15330D1F0A817B00D87839 /* AddEditContactLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactLocalDataManager.swift; sourceTree = "<group>"; };
+		DB15330F1F0A81C600D87839 /* AddEditContactRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactRemoteDataManager.swift; sourceTree = "<group>"; };
 		DB15C5DF1F064A5900F0D7C1 /* ContactDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailInteractor.swift; sourceTree = "<group>"; };
 		DB15C5E31F064AF200F0D7C1 /* ContactDetailRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailRemoteDataManager.swift; sourceTree = "<group>"; };
 		DB15C5E51F064B0600F0D7C1 /* ContactDetailLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailLocalDataManager.swift; sourceTree = "<group>"; };
@@ -105,6 +115,8 @@
 		DB904C4D1F04B06E00A656F4 /* ContactListLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListLocalDataManager.swift; sourceTree = "<group>"; };
 		DB9206451F0408890063B3D6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		DBBB6C291F03BEA4007A11FC /* ContactListRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListRemoteDataManager.swift; sourceTree = "<group>"; };
+		DBC246E21F0A5974007E1A38 /* AddEditContactProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactProtocols.swift; sourceTree = "<group>"; };
+		DBC246E41F0A5BE2007E1A38 /* AddEditContactPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditContactPresenter.swift; sourceTree = "<group>"; };
 		DBE1D98F1F03694F00AC3580 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DBE1D9911F0371D300AC3580 /* PersistenceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceError.swift; sourceTree = "<group>"; };
 		DBF3F7FD1F03C7F4009C3E83 /* ContactListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListProtocol.swift; sourceTree = "<group>"; };
@@ -301,6 +313,7 @@
 		DB8E7AAA1F0934A6006999B2 /* WireFrame */ = {
 			isa = PBXGroup;
 			children = (
+				DB11A5A21F0A2ABA00971AF8 /* AddEditContactWireFrame.swift */,
 			);
 			name = WireFrame;
 			sourceTree = "<group>";
@@ -316,6 +329,7 @@
 		DB8E7AAC1F0934B5006999B2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DBC246E21F0A5974007E1A38 /* AddEditContactProtocols.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 		DB8E7AAD1F0934BC006999B2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				DBC246E41F0A5BE2007E1A38 /* AddEditContactPresenter.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -330,6 +345,7 @@
 		DB8E7AAE1F0934C2006999B2 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				DB15330B1F0A74D100D87839 /* AddEditContactInteractor.swift */,
 			);
 			name = Interactor;
 			sourceTree = "<group>";
@@ -346,6 +362,7 @@
 		DB8E7AB01F0934D0006999B2 /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				DB15330D1F0A817B00D87839 /* AddEditContactLocalDataManager.swift */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -353,6 +370,7 @@
 		DB8E7AB11F0934D6006999B2 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				DB15330F1F0A81C600D87839 /* AddEditContactRemoteDataManager.swift */,
 			);
 			name = Remote;
 			sourceTree = "<group>";
@@ -764,14 +782,20 @@
 				DB2B373A1F03674100C6D75D /* AppDelegate.swift in Sources */,
 				DB15C5E61F064B0700F0D7C1 /* ContactDetailLocalDataManager.swift in Sources */,
 				DB904C4E1F04B06E00A656F4 /* ContactListLocalDataManager.swift in Sources */,
+				DB11A5A31F0A2ABA00971AF8 /* AddEditContactWireFrame.swift in Sources */,
+				DBC246E51F0A5BE2007E1A38 /* AddEditContactPresenter.swift in Sources */,
 				DB17BDC01F0390EF008A13A7 /* ContactTableViewCell.swift in Sources */,
+				DB15330E1F0A817B00D87839 /* AddEditContactLocalDataManager.swift in Sources */,
 				DB9206461F0408890063B3D6 /* CoreDataStore.swift in Sources */,
 				DBE1D9901F03694F00AC3580 /* Endpoint.swift in Sources */,
 				DBF3F8001F0402C7009C3E83 /* Contact+CoreDataProperties.swift in Sources */,
 				DB904C4C1F04AD1700A656F4 /* ContactListInteractor.swift in Sources */,
 				DB2F4C7E1F049BA000820B26 /* Contact+CoreData.swift in Sources */,
+				DB15330C1F0A74D100D87839 /* AddEditContactInteractor.swift in Sources */,
 				DB15C5E01F064A5900F0D7C1 /* ContactDetailInteractor.swift in Sources */,
+				DB1533101F0A81C600D87839 /* AddEditContactRemoteDataManager.swift in Sources */,
 				DBE1D9921F0371D300AC3580 /* PersistenceError.swift in Sources */,
+				DBC246E31F0A5974007E1A38 /* AddEditContactProtocols.swift in Sources */,
 				DB1E98501F04FD90005BE4AA /* ContactDetailPresenter.swift in Sources */,
 				DB1E98441F04FBB6005BE4AA /* ContactDetailWireFrame.swift in Sources */,
 				DBBB6C2A1F03BEA4007A11FC /* ContactListRemoteDataManager.swift in Sources */,

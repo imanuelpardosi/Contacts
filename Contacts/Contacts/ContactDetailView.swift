@@ -22,10 +22,15 @@ class ContactDetailView: UIViewController {
     @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var gradientView: UIView!
     
+    var getContact: ContactModel = ContactModel()
     var hud: HUD = HUD()
     var uiViewUtilities: UIViewUtilities = UIViewUtilities()
     var colorUtilities: ColorUtilities = ColorUtilities()
     var presenter: ContactDetailPresenterProtocol?
+    
+    @IBAction func btnCancelOnClick(_ sender: Any) {
+        print("cancel")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,9 @@ class ContactDetailView: UIViewController {
         print("btnMessage.frame.width: \(btnMessage.frame.width)")
         
         presenter?.viewDidLoad()
-        self.navigationController?.navigationBar.backItem?.title = "Contact"
+        let backItem = UIBarButtonItem(title: "Contact", style: .plain, target: self, action: #selector(backTapped))
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backItem
+        
         let edit = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         self.navigationItem.rightBarButtonItem = edit
         self.navigationController?.navigationBar.tintColor = colorUtilities.colorFromHex(hex: "#50E3C2")
@@ -45,10 +52,14 @@ class ContactDetailView: UIViewController {
         uiViewUtilities.setGradientBackground(topColor: "#FFFFFF", bottomColor: "#50E3C2", uiView: gradientView)
     }
     
+    func backTapped() {
+        presenter?.showContactList()
+        print("show contact list")
+    }
+    
     func editTapped(sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddEditContactView") as! UIViewController
-        self.navigationController!.pushViewController(vc, animated: true)
+        print("get contact: \(getContact)")
+        presenter?.showEditContact(forContact: getContact)
     }
 
     @IBAction func btnMessageOnClick(_ sender: Any) {
@@ -71,9 +82,7 @@ class ContactDetailView: UIViewController {
 extension ContactDetailView: ContactDetailViewProtocol {
     
     func showContactDetail(forContact contact: [ContactModel]) {
-        
-        print("whut: \(contact)")
-        
+        getContact = contact.first!
         let fullName = (contact.first?.firstName)! + " " + (contact.first?.lastName)!
         name.text = fullName
         email.text = contact.first?.email

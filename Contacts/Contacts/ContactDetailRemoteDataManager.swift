@@ -33,27 +33,5 @@ class ContactDetailRemoteDataManager: ContactDetailRemoteDataManagerInputProtoco
                     self.remoteRequestHandler?.onError(errorMessage: err.localizedDescription)
                 }
             })
-    }
-
-
-            //.responseArray(completionHandler: { (response: DataResponse<[ContactModel]>) in
-//                
-//                print("response: \(response)")
-//                switch response.result {
-//                case .success(let contacts):
-//                    print("contacts: \(contacts)")
-//                    self.remoteRequestHandler?.onContactsRetrieved(contacts)
-//                    
-//                case .failure(let err):
-//                    print("Error: \(err.localizedDescription)")
-//                    self.remoteRequestHandler?.onError()
-//                }
-//            })
-        
-//        .responseString { response in
-//            print("Success: \(response.result.isSuccess)")
-//            print("Response String: \(response.result.value)")
-//        }
-        
-    
+    }    
 }

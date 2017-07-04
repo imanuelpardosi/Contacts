@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 
 class ContactListWireFrame: ContactListWireFrameProtocol {
+    func presentAddContactScreen(from view: ContactListViewProtocol) {
+        let addContactViewController = AddEditContactWireFrame.createAddContactModule()
+        
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(addContactViewController, animated: true)
+        }
+
+    }
+
     
     func presentContactDetailScreen(from view: ContactListViewProtocol, forContact contact: ContactModel) {
         let contactDetailViewController = ContactDetailWireFrame.createContactDetailModule(forContact: contact)

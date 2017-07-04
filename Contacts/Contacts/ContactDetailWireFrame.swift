@@ -12,11 +12,20 @@ import UIKit
 class ContactDetailWireFrame: ContactDetailWireFrameProtocol {
     
     func presentEditContactScreen(from view: ContactDetailViewProtocol, forContact contact: ContactModel) {
-//        let editContactViewController = EditContactWireFrame.createEditContactModule(forContact: contact)
-//        
-//        if let sourceView = view as? UIViewController {
-//            sourceView.navigationController?.pushViewController(editContactViewController, animated: true)
-//        }
+        let editContactViewController = AddEditContactWireFrame.createEditContactModule(forContact: contact)
+        
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(editContactViewController, animated: true)
+        }
+        //view.removeFromParentViewController()
+    }
+    
+    func presentContactListScreen(from view: ContactDetailViewProtocol) {
+        let contactListViewController = ContactListWireFrame.createContactListModule()
+        
+        if let sourceView = view as? UIViewController {
+            sourceView.navigationController?.pushViewController(contactListViewController, animated: true)
+        }
     }
     
     class func createContactDetailModule(forContact contact: ContactModel) -> UIViewController {

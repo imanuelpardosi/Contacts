@@ -22,6 +22,10 @@ class ContactListPresenter: ContactListPresenterProtocol {
     func showContactDetail(forContact contact: ContactModel) {
         wireFrame?.presentContactDetailScreen(from: view!, forContact: contact)
     }
+    
+    func showAddContact() {
+        wireFrame?.presentAddContactScreen(from: view!)
+    }
 }
 
 extension ContactListPresenter: ContactListInteractorOutputProtocol {

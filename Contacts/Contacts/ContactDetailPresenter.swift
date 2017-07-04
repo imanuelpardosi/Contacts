@@ -9,7 +9,6 @@
 import Foundation
 
 class ContactDetailPresenter: ContactDetailPresenterProtocol {
-    
     weak var view: ContactDetailViewProtocol?
     var interactor: ContactDetailInteractorInputProtocol?
     var wireFrame: ContactDetailWireFrameProtocol?
@@ -22,6 +21,10 @@ class ContactDetailPresenter: ContactDetailPresenterProtocol {
     
     func showEditContact(forContact contact: ContactModel) {
         wireFrame?.presentEditContactScreen(from: view!, forContact: contact)
+    }
+    
+    func showContactList() {
+        wireFrame?.presentContactListScreen(from: view!)
     }
 }
 
