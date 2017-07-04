@@ -9,6 +9,7 @@
 import Foundation
 
 class ContactDetailPresenter: ContactDetailPresenterProtocol {
+
     weak var view: ContactDetailViewProtocol?
     var interactor: ContactDetailInteractorInputProtocol?
     var wireFrame: ContactDetailWireFrameProtocol?
@@ -26,9 +27,18 @@ class ContactDetailPresenter: ContactDetailPresenterProtocol {
     func showContactList() {
         wireFrame?.presentContactListScreen(from: view!)
     }
+    
+    func updateFavorite(id: Int) {
+        interactor?.updateFavorite(id: id)
+    }
+    
+    func getCurrentFavorite(id: Int) -> Bool {
+        return (interactor?.getCurrentFavorite(id: id))!
+    }
 }
 
 extension ContactDetailPresenter: ContactDetailInteractorOutputProtocol {
+    
     func didRetrieveDetail(_ contacts: [ContactModel]) {
         view?.hideLoading()
         view?.showContactDetail(forContact: contacts)

@@ -241,31 +241,31 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xJ-5v-IR8">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" image="star"/>
+                                                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" image="message"/>
                                                         <connections>
                                                             <action selector="btnMessageOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="xv4-Ai-PIs"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgU-Bz-yKn">
                                                         <rect key="frame" x="81" y="0.0" width="44.5" height="45"/>
-                                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" image="star"/>
+                                                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" image="call"/>
                                                         <connections>
                                                             <action selector="btnCallOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="Qej-8q-3zf"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjr-dU-xIb">
                                                         <rect key="frame" x="161.5" y="0.0" width="45" height="45"/>
-                                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" image="star"/>
+                                                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" image="mail"/>
                                                         <connections>
                                                             <action selector="btnEmailOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="pCl-sz-jsq"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfl-H1-9zO">
                                                         <rect key="frame" x="242.5" y="0.0" width="44.5" height="45"/>
-                                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" image="star"/>
                                                         <connections>
                                                             <action selector="btnFavoriteOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="d3M-cR-l1Q"/>
@@ -661,7 +661,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="star" width="32" height="32"/>
+        <image name="call" width="24" height="24"/>
+        <image name="mail" width="24" height="24"/>
+        <image name="message" width="24" height="24"/>
+        <image name="star" width="24" height="24"/>
         <image name="user" width="512" height="512"/>
     </resources>
 </document>

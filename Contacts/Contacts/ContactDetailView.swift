@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
-class ContactDetailView: UIViewController {
+
+class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -61,19 +63,56 @@ class ContactDetailView: UIViewController {
     }
 
     @IBAction func btnMessageOnClick(_ sender: Any) {
+        let messageVC = MFMessageComposeViewController()
         
+        messageVC.body = "Enter a message";
+        messageVC.recipients = [mobile.text!]
+        messageVC.messageComposeDelegate = self
+        
+        self.present(messageVC, animated: false, completion: nil)
     }
     
     @IBAction func btnCallOnClick(_ sender: Any) {
-        
+        guard let number = URL(string: "tel://" + mobile.text!) else { return }
+        UIApplication.shared.open(number)
     }
     
     @IBAction func btnEmailOnClick(_ sender: Any) {
-        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([email.text!])
+            mail.setSubject("Hello there!")
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
     }
     
     @IBAction func btnFavoriteOnClick(_ sender: Any) {
+        presenter?.updateFavorite(id: getContact.id)
         
+        let favorite = presenter?.getCurrentFavorite(id: getContact.id)
+        if favorite! {
+            btnFavorite.backgroundColor = UIColor.brown
+        } else {
+            btnFavorite.backgroundColor = colorUtilities.colorFromHex(hex: "#50E3C2")
+            
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController,
+                               didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        // Check the result or perform other tasks.
+        
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

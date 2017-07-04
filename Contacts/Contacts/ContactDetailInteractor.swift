@@ -9,9 +9,35 @@
 import Foundation
 
 class ContactDetailInteractor: ContactDetailInteractorInputProtocol {
+
     weak var presenter: ContactDetailInteractorOutputProtocol?
     var localDatamanager: ContactDetailLocalDataManagerInputProtocol?
     var remoteDatamanager: ContactDetailRemoteDataManagerInputProtocol?
+    
+    func getCurrentFavorite(id: Int) -> Bool {
+        do {
+            let contact = try localDatamanager?.retrieveContactById(id: id)
+            return (contact?.first?.favorite)!
+        } catch {
+            return false
+        }
+        
+    }
+    
+    func updateFavorite(id: Int) {
+        do {
+            let contact = try localDatamanager?.retrieveContactById(id: id)
+            remoteDatamanager?.updateFavorite(id: id, favorite: (contact?.first?.favorite)!)
+        } catch {
+            
+        }
+      
+        do {
+            try localDatamanager?.updateFavorite(id: id)
+        } catch {
+            
+        }
+    }
     
     func retrieveContactById(id: Int) {
         do {

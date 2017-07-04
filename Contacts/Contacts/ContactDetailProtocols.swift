@@ -36,7 +36,8 @@ protocol ContactDetailPresenterProtocol: class {
     func viewDidLoad()
     func showEditContact(forContact contact: ContactModel)
     func showContactList()
-
+    func updateFavorite(id: Int)
+    func getCurrentFavorite(id: Int) -> Bool
 }
 
 protocol ContactDetailInteractorOutputProtocol: class {
@@ -52,6 +53,8 @@ protocol ContactDetailInteractorInputProtocol: class {
     
     // PRESENTER -> INTERACTOR
     func retrieveContactById(id: Int)
+    func updateFavorite(id: Int)
+    func getCurrentFavorite(id: Int) -> Bool
 }
 
 protocol ContactDetailRemoteDataManagerInputProtocol: class {
@@ -59,6 +62,7 @@ protocol ContactDetailRemoteDataManagerInputProtocol: class {
     
     // INTERACTOR -> REMOTEDATAMANAGER
     func retrieveContactById(id: Int)
+    func updateFavorite(id: Int, favorite: Bool)
 }
 
 protocol ContactDetailRemoteDataManagerOutputProtocol: class {
@@ -71,4 +75,5 @@ protocol ContactDetailLocalDataManagerInputProtocol: class {
     // INTERACTOR -> LOCALDATAMANAGER
     func retrieveContactById(id: Int) throws -> [Contact]
     func updateContact(id: Int, email: String, phoneNumber: String) throws
+    func updateFavorite(id: Int) throws
 }
