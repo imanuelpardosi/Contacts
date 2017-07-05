@@ -16,6 +16,10 @@ class ContactListView: UIViewController {
     var contactList: [ContactModel] = []
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewDidLoad()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,17 +31,11 @@ class ContactListView: UIViewController {
     }
     
     @IBAction func addButtonOnClick(_ sender: Any) {
-        presenter?.showAddContact()
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "AddEditContactView") as! UIViewController
-//        self.navigationController!.pushViewController(vc, animated: true)
-//        
+        presenter?.showAddContact()        
     }
 }
 
 extension ContactListView: UITableViewDataSource, UITableViewDelegate {
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell

@@ -7,9 +7,12 @@
 //
 
 import XCTest
+import Alamofire
 @testable import Contacts
 
 class ContactsTests: XCTestCase {
+    
+    var addContact: AddEditContactRemoteDataManager!
     
     override func setUp() {
         super.setUp()
@@ -24,6 +27,25 @@ class ContactsTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        if let view = navController.childViewControllers.first as? ContactListView {
+            let presenter: ContactListPresenterProtocol & ContactListInteractorOutputProtocol = ContactListPresenter()
+            let interactor: ContactListInteractorInputProtocol & ContactListRemoteDataManagerOutputProtocol = ContactListInteractor()
+            let localDataManager: ContactListLocalDataManagerInputProtocol = ContactListLocalDataManager()
+            let remoteDataManager: ContactListRemoteDataManagerInputProtocol = ContactListRemoteDataManager()
+            let wireFrame: ContactListWireFrameProtocol = ContactListWireFrame()
+            
+            view.presenter = presenter
+            presenter.view = view
+            presenter.wireFrame = wireFrame
+            presenter.interactor = interactor
+            interactor.presenter = presenter
+            interactor.localDatamanager = localDataManager
+            interactor.remoteDatamanager = remoteDataManager
+            remoteDataManager.remoteRequestHandler = interactor
+            
+            return navController
+        }
     }
     
     func testPerformanceExample() {
@@ -32,5 +54,4 @@ class ContactsTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
 }

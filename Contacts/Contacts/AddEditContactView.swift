@@ -18,7 +18,6 @@ UINavigationControllerDelegate {
     var colorUtilities: ColorUtilities = ColorUtilities()
     let picker = UIImagePickerController()
     
-    @IBOutlet weak var popUp: UIView!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -33,7 +32,6 @@ UINavigationControllerDelegate {
         
         picker.delegate = self
         presenter?.viewDidLoad()
-        popUp.isHidden = true
         
         let backItem = UIBarButtonItem()
         backItem.title = "Cancel"
@@ -50,6 +48,7 @@ UINavigationControllerDelegate {
         cameraIcon.isUserInteractionEnabled = true
         cameraIcon.addGestureRecognizer(tapGestureRecognizer)
         
+        uiViewUtilities.borderView(views: profilePicture, borderWidth: 3, color: UIColor.white)
         uiViewUtilities.circleView(views: profilePicture, cameraIcon)
         uiViewUtilities.setGradientBackground(topColor: "#FFFFFF", bottomColor: "#50E3C2", uiView: gradientView)
     }
@@ -66,7 +65,34 @@ UINavigationControllerDelegate {
     
     func openCamera(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        popUp.isHidden = false
+        let refreshAlert = UIAlertController(title: "", message: "Change Profile Picture", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (action: UIAlertAction!) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.picker.allowsEditing = false
+                self.picker.sourceType = UIImagePickerControllerSourceType.camera
+                self.picker.cameraCaptureMode = .photo
+                self.picker.modalPresentationStyle = .fullScreen
+                self.present(self.picker,animated: true,completion: nil)
+            } else {
+                
+            }
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { (action: UIAlertAction!) in
+            self.picker.allowsEditing = false
+            self.picker.sourceType = .photoLibrary
+            self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            self.picker.modalPresentationStyle = .popover
+            self.present(self.picker, animated: true, completion: nil)
+            //picker.popoverPresentationController?.barButtonItem = sender
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -82,33 +108,6 @@ UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func openCamera(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            picker.allowsEditing = false
-            picker.sourceType = UIImagePickerControllerSourceType.camera
-            picker.cameraCaptureMode = .photo
-            picker.modalPresentationStyle = .fullScreen
-            present(picker,animated: true,completion: nil)
-            popUp.isHidden = true
-        } else {
-            
-        }
-    }
-    
-    @IBAction func openLibrary(_ sender: Any) {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        picker.modalPresentationStyle = .popover
-        present(picker, animated: true, completion: nil)
-        //picker.popoverPresentationController?.barButtonItem = sender
-        popUp.isHidden = true
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        popUp.isHidden = true
-    }
 }
 
 extension AddEditContactView: AddEditContactViewProtocol {
@@ -123,8 +122,6 @@ extension AddEditContactView: AddEditContactViewProtocol {
         let placeholderImage = UIImage(named: "user")!
         let profilePictureUrl = URL(string: (contact.profilePicture))
         profilePicture?.af_setImage(withURL: profilePictureUrl!, placeholderImage: placeholderImage)
-        
-        uiViewUtilities.borderView(views: profilePicture, borderWidth: 3, color: UIColor.white)
     }
     
     func showError(errorMessage: String) {

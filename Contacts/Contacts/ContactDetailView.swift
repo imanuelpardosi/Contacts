@@ -34,6 +34,10 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
         print("cancel")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewDidLoad()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnHeightConstraint.constant = btnMessage.frame.width
@@ -52,6 +56,7 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
         
         uiViewUtilities.circleView(views: profilePicture, btnMessage, btnCall, btnEmail, btnFavorite)
         uiViewUtilities.setGradientBackground(topColor: "#FFFFFF", bottomColor: "#50E3C2", uiView: gradientView)
+        
     }
     
     func backTapped() {
@@ -130,6 +135,11 @@ extension ContactDetailView: ContactDetailViewProtocol {
         let profilePictureUrl = URL(string: (contact.first?.profilePicture)!)
         profilePicture?.af_setImage(withURL: profilePictureUrl!, placeholderImage: placeholderImage)
         
+        if getContact.favorite {
+            btnFavorite.backgroundColor = UIColor.brown
+        } else {
+            btnFavorite.backgroundColor = colorUtilities.colorFromHex(hex: "#50E3C2")
+        }
         uiViewUtilities.borderView(views: profilePicture, borderWidth: 3, color: UIColor.white)
     }
     

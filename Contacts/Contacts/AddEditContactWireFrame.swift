@@ -15,7 +15,7 @@ class AddEditContactWireFrame: AddEditContactWireFrameProtocol {
         let contactDetailViewController = ContactDetailWireFrame.createContactDetailModule(forContact: contact)
         
         if let sourceView = view as? UIViewController {
-            sourceView.navigationController?.pushViewController(contactDetailViewController, animated: true)
+            sourceView.navigationController?.popViewController(animated: true)
         }
     }
     
