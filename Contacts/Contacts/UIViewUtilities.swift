@@ -14,8 +14,13 @@ class UIViewUtilities {
     
     func circleView(views: UIView...) {
         for view: UIView in views {
+            
+            view.frame.size.height = view.frame.size.width
             view.layer.cornerRadius = view.frame.size.width / 2
             view.clipsToBounds = true
+            
+            print(" view.frame.size.height: \( view.frame.size.height)")
+            print(" view.frame.size.width: \( view.frame.size.width)")
         }
     }
     
@@ -37,6 +42,7 @@ class UIViewUtilities {
     func setGradientBackground(topColor: String, bottomColor: String, uiView: UIView) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = uiView.bounds
+        gradientLayer.frame.size.width = UIScreen.main.bounds.width
         
         let color1 = colorUtilities.colorFromHex(hex: topColor)
         let color2 = colorUtilities.colorFromHex(hex: bottomColor).withAlphaComponent(0.28)

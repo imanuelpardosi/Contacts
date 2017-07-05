@@ -17,13 +17,14 @@ class ContactListView: UIViewController {
     var arrIndexSection : NSArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
     override func viewWillAppear(_ animated: Bool) {
+        //contactTable.reloadData()
         presenter?.viewDidLoad()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter?.viewDidLoad()
+        //presenter?.viewDidLoad()
         contactTable.tableFooterView = UIView()
         
         contactTable.delegate = self

@@ -28,31 +28,174 @@ class ContactsUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-//        let app = XCUIApplication()
-//        let table = app.tables.element(boundBy: 0)
-//        debugPrint(table.cells.count)
-//        XCTAssertNotEqual(table.cells.count, 0)
-//        
-//        let tablesQuery = app.tables
-//        let cellQuery = tablesQuery.cells.containing(.staticText, identifier: "contactCell")
-//        let cell = cellQuery.children(matching: .staticText)
-//        let cellElement = cell.element
-//        cellElement.tap()
-        
-//        let app = XCUIApplication()
-//        app.navigationBars["Contact"].buttons["Add"].tap()
-//        app.navigationBars["Contacts.AddEditContactView"].tap()
-//        app.alerts["Error"].buttons["Close"].tap()
-        
-//        let tableElement = tablesQuery.element
-//        tableElement.swipeUp()
-        
+    func testShowContactList() {
         let app = XCUIApplication()
-        app.buttons["Add"].tap()
+        let count = app.tables.cells.count
+        let btnAdd = app.buttons["Add"]
+        let btnGroups = app.buttons["Groups"]
+        
+        XCTAssert(count > 0)
+        XCTAssertTrue(btnAdd.exists)
+        XCTAssertTrue(btnGroups.exists)
     }
     
+    func testSwipeContactList() {
+        let app = XCUIApplication()
+        app.tables.element.swipeUp()
+    }
+    
+    func testShowContactDetail() {
+        let app = XCUIApplication()
+        
+        let lblName = app.staticTexts.element(matching: .any, identifier: "name")
+        let btnEdit = app.buttons["Edit"]
+        let btnCancel = app.buttons["Cancel"]
+        let btnMessage = app.buttons["message"]
+        let btnCall = app.buttons["call"]
+        let btnEmail = app.buttons["email"]
+        let btnFavourite = app.buttons["favourite"]
+        
+        app.cells.element(boundBy: 4).tap()
+        
+        XCTAssertTrue(lblName.exists)
+        XCTAssertTrue(btnEdit.exists)
+        XCTAssertTrue(btnCancel.exists)
+        XCTAssertTrue(btnMessage.exists)
+        XCTAssertTrue(btnCall.exists)
+        XCTAssertTrue(btnEmail.exists)
+        XCTAssertTrue(btnFavourite.exists)
+    }
+    
+    func testShowAddContact() {
+        let app = XCUIApplication()
+        
+        let txtFieldFirstName = app.textFields["firstName"]
+        let txtFieldLastName = app.textFields["lastName"]
+        let txtFieldMobile = app.textFields["mobile"]
+        let txtFieldEmail = app.textFields["email"]
+        let btnDone = app.buttons["Done"]
+        let btnCancel = app.buttons["Cancel"]
+        
+        app.buttons["Add"].tap()
+        
+        XCTAssertTrue(txtFieldFirstName.exists)
+        XCTAssertTrue(txtFieldLastName.exists)
+        XCTAssertTrue(txtFieldMobile.exists)
+        XCTAssertTrue(txtFieldEmail.exists)
+        XCTAssertTrue(btnDone.exists)
+        XCTAssertTrue(btnCancel.exists)
+        
+        XCTAssertNotEqual(txtFieldFirstName.label, "Imanuel")
+        XCTAssertNotEqual(txtFieldLastName.label, "Pardosi")
+        XCTAssertEqual(txtFieldMobile.label, "")
+        XCTAssertEqual(txtFieldEmail.label, "")
+    }
+    
+    func testAddContact() {
+        let app = XCUIApplication()
+        
+        let txtFieldFirstName = app.textFields["firstName"]
+        let txtFieldLastName = app.textFields["lastName"]
+        let txtFieldMobile = app.textFields["mobile"]
+        let txtFieldEmail = app.textFields["email"]
+        let btnDone = app.buttons["Done"]
+        let btnCancel = app.buttons["Cancel"]
+        
+        app.buttons["Add"].tap()
+        
+        XCTAssertTrue(txtFieldFirstName.exists)
+        XCTAssertTrue(txtFieldLastName.exists)
+        XCTAssertTrue(txtFieldMobile.exists)
+        XCTAssertTrue(txtFieldEmail.exists)
+        XCTAssertTrue(btnDone.exists)
+        XCTAssertTrue(btnCancel.exists)
+        
+        txtFieldFirstName.tap()
+        txtFieldFirstName.typeText("First")
+        txtFieldLastName.tap()
+        txtFieldLastName.typeText("Last")
+        txtFieldMobile.tap()
+        txtFieldMobile.typeText("+6282256789300")
+        txtFieldEmail.tap()
+        txtFieldEmail.typeText("first@last.com")
+        
+        app.buttons["Done"].tap()
+    }
+    
+    func testUpdateContact() {
+        let app = XCUIApplication()
+        
+        let txtFieldFirstName = app.textFields["firstName"]
+        let txtFieldLastName = app.textFields["lastName"]
+        let txtFieldMobile = app.textFields["mobile"]
+        let txtFieldEmail = app.textFields["email"]
+        let btnDone = app.buttons["Done"]
+        let btnCancel = app.buttons["Cancel"]
+        let btnEdit = app.buttons["Edit"]
+        let name = app.staticTexts.element(matching: .any, identifier: "name")
+        app.cells.element(boundBy: 5).tap()
+        
+        XCTAssertTrue(btnEdit.exists)
+        
+        app.buttons["Edit"].tap()
+        
+        XCTAssertTrue(txtFieldFirstName.exists)
+        XCTAssertTrue(txtFieldLastName.exists)
+        XCTAssertTrue(txtFieldMobile.exists)
+        XCTAssertTrue(txtFieldEmail.exists)
+        XCTAssertTrue(btnDone.exists)
+        XCTAssertTrue(btnCancel.exists)
+        
+        txtFieldFirstName.clearAndEnterText(text: "Risa")
+        txtFieldLastName.clearAndEnterText(text: "Qwerty")
+        
+        app.buttons["Done"].tap()
+        
+        XCTAssertEqual(name.label, "Risa Qwerty")
+    }
+    
+    func testUpdateFavourite() {
+        let app = XCUIApplication()
+        
+        
+        let lblName = app.staticTexts.element(matching: .any, identifier: "name")
+        let btnEdit = app.buttons["Edit"]
+        let btnCancel = app.buttons["Cancel"]
+        let btnMessage = app.buttons["message"]
+        let btnCall = app.buttons["call"]
+        let btnEmail = app.buttons["email"]
+        let btnFavourite = app.buttons["favourite"]
+        
+        app.cells.element(boundBy: 4).tap()
+        
+        XCTAssertTrue(lblName.exists)
+        XCTAssertTrue(btnEdit.exists)
+        XCTAssertTrue(btnCancel.exists)
+        XCTAssertTrue(btnMessage.exists)
+        XCTAssertTrue(btnCall.exists)
+        XCTAssertTrue(btnEmail.exists)
+        XCTAssertTrue(btnFavourite.exists)
+        
+        btnFavourite.tap()
+    }
+}
+
+extension XCUIElement {
+    /**
+     Removes any current text in the field before typing in the new value
+     - Parameter text: the text to enter into the field
+     */
+    func clearAndEnterText(text: String) {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+        
+        self.tap()
+        
+        let deleteString = stringValue.characters.map { _ in XCUIKeyboardKeyDelete }.joined(separator: "")
+        
+        self.typeText(deleteString)
+        self.typeText(text)
+    }
 }

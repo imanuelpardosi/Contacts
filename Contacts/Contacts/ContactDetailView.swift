@@ -24,6 +24,9 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
     @IBOutlet weak var btnHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var gradientView: UIView!
     
+    @IBOutlet weak var rightMargin: NSLayoutConstraint!
+    @IBOutlet weak var leftMargin: NSLayoutConstraint!
+    @IBOutlet weak var stackView: UIStackView!
     var getContact: ContactModel = ContactModel()
     var hud: HUD = HUD()
     var uiViewUtilities: UIViewUtilities = UIViewUtilities()
@@ -40,12 +43,17 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnHeightConstraint.constant = btnMessage.frame.width
-        
-        print("btnHeightConstraint.constant: \(btnHeightConstraint.constant)")
-        print("btnMessage.frame.width: \(btnMessage.frame.width)")
         
         presenter?.viewDidLoad()
+        
+        let stackViewWidht = (UIScreen.main.bounds.width - leftMargin.constant - rightMargin.constant)
+        let iconWidth = (stackView.frame.size.width - (stackView.spacing * 3)) / 4
+        
+        btnHeightConstraint.constant = iconWidth
+        
+        print("stack: \(stackView.frame.size)")
+        //print("btnMessage.frame.width: \(btnMessage.frame.width)")
+        
         let backItem = UIBarButtonItem(title: "Contact", style: .plain, target: self, action: #selector(backTapped))
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backItem
         
@@ -112,12 +120,12 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
         self.dismiss(animated: true, completion: nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController,
-                               didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    @objc func mailComposeController(_ didFinishWithcontroller: MFMailComposeViewController,
+                                     didFinishWith result: MFMailComposeResult, error: Error?) {
         // Check the result or perform other tasks.
         
         // Dismiss the mail compose view controller.
-        controller.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 

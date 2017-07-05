@@ -69,7 +69,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNH-Dq-ozI" id="v0h-i9-Hhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="pVN-eT-g91" userLabel="profilePicture">
@@ -79,14 +79,15 @@
                                                                 <constraint firstAttribute="width" constant="40" id="BB6-le-uZM"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-y0-8Kb" userLabel="name">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AN6-y0-8Kb">
                                                             <rect key="frame" x="72" y="24" width="38" height="15"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="name"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-color" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-fX-r6t" userLabel="favorite">
-                                                            <rect key="frame" x="323" y="22" width="20" height="19"/>
+                                                            <rect key="frame" x="362" y="22" width="20" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="XVx-54-jxq"/>
                                                             </constraints>
@@ -108,6 +109,9 @@
                                                         <constraint firstItem="pVN-eT-g91" firstAttribute="centerY" secondItem="AN6-y0-8Kb" secondAttribute="centerY" id="zxd-oA-xyJ"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="contactCell"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="favorite" destination="Jcd-fX-r6t" id="ZZF-Lg-Bty"/>
                                                     <outlet property="name" destination="AN6-y0-8Kb" id="2e2-qf-jrN"/>
@@ -115,6 +119,9 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="contactTable"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -133,6 +140,9 @@
                     <navigationItem key="navigationItem" title="Contact" id="Fkj-57-kve">
                         <barButtonItem key="leftBarButtonItem" title="Groups" id="eeQ-jX-v3v">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="Groups"/>
+                            </userDefinedRuntimeAttributes>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CYp-Im-64Y">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,7 +180,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-gw-DHl" userLabel="NavigationView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                         <subviews>
-                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qaw-44-CZS">
+                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="detailNavigationBar" translatesAutoresizingMaskIntoConstraints="NO" id="Qaw-44-CZS">
                                                 <rect key="frame" x="0.0" y="14" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -178,12 +188,18 @@
                                                     <navigationItem id="REv-Sv-MH3">
                                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Fz-dE-TGa">
                                                             <color key="tintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="Cancel"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="btnCancelOnClick:" destination="TeM-cH-px1" id="2Fm-ZH-0mV"/>
                                                             </connections>
                                                         </barButtonItem>
-                                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="2Ff-KA-THN">
+                                                        <barButtonItem key="rightBarButtonItem" title=" Edit" id="2Ff-KA-THN">
                                                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="Edit"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </barButtonItem>
                                                     </navigationItem>
                                                 </items>
@@ -208,6 +224,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imanuel Pardosi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-H4-sa1">
                                                 <rect key="frame" x="20" y="155" width="335" height="19.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="name"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -245,7 +262,11 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xJ-5v-IR8">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                         <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="message"/>
                                                         <state key="normal" image="message"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="message"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="btnMessageOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="xv4-Ai-PIs"/>
                                                         </connections>
@@ -253,6 +274,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgU-Bz-yKn">
                                                         <rect key="frame" x="81" y="0.0" width="44.5" height="45"/>
                                                         <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="call"/>
                                                         <state key="normal" image="call"/>
                                                         <connections>
                                                             <action selector="btnCallOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="Qej-8q-3zf"/>
@@ -261,7 +283,11 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjr-dU-xIb">
                                                         <rect key="frame" x="161.5" y="0.0" width="45" height="45"/>
                                                         <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="email"/>
                                                         <state key="normal" image="mail"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="btnEmailOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="pCl-sz-jsq"/>
                                                         </connections>
@@ -269,6 +295,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfl-H1-9zO">
                                                         <rect key="frame" x="242.5" y="0.0" width="44.5" height="45"/>
                                                         <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="favourite"/>
                                                         <state key="normal" image="star"/>
                                                         <connections>
                                                             <action selector="btnFavoriteOnClick:" destination="TeM-cH-px1" eventType="touchUpInside" id="d3M-cR-l1Q"/>
@@ -416,9 +443,12 @@
                         <outlet property="btnMessage" destination="0xJ-5v-IR8" id="BA3-MZ-Yg6"/>
                         <outlet property="email" destination="FSy-ZV-Xqo" id="Uds-vf-F3X"/>
                         <outlet property="gradientView" destination="e7y-fE-b2S" id="TvU-9d-AeB"/>
+                        <outlet property="leftMargin" destination="WED-oW-Ne9" id="haX-mS-Z5g"/>
                         <outlet property="mobile" destination="KXs-OB-lMt" id="tuL-ce-hSG"/>
                         <outlet property="name" destination="CyM-H4-sa1" id="veF-pa-mhd"/>
                         <outlet property="profilePicture" destination="7F4-fX-svu" id="Tdw-LW-k7W"/>
+                        <outlet property="rightMargin" destination="bfO-YF-Fcp" id="xFo-TW-xGK"/>
+                        <outlet property="stackView" destination="XeO-K9-9Vw" id="Awb-j7-gcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2D-Rj-Qqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -451,9 +481,15 @@
                                                     <navigationItem id="3d9-DX-G4E">
                                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="cXJ-h0-ERI">
                                                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="Cancel"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </barButtonItem>
-                                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="VVi-1d-Par">
+                                                        <barButtonItem key="rightBarButtonItem" title=" Done" id="VVi-1d-Par">
                                                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="Done"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </barButtonItem>
                                                     </navigationItem>
                                                 </items>
@@ -487,6 +523,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
+                                                <accessibility key="accessibilityConfiguration" identifier="profilePicture" label="profilePicture"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="175" id="5Qm-zG-bZG"/>
                                                     <constraint firstAttribute="height" constant="175" id="AKp-up-6zR"/>
@@ -523,9 +560,13 @@
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J5G-qV-ib9">
                                                 <rect key="frame" x="138.5" y="19.5" width="216.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="firstName"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value="firstName"/>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3o-DQ-MRG" userLabel="HorizontalLine3">
                                                 <rect key="frame" x="10" y="211.5" width="365" height="1"/>
@@ -549,9 +590,10 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1T-1m-3m3">
                                                 <rect key="frame" x="138" y="90.5" width="216.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="lastName"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrB-A7-zAK">
                                                 <rect key="frame" x="24" y="90.5" width="78.5" height="30"/>
@@ -561,9 +603,10 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+62" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9K6-Xd-Se2">
                                                 <rect key="frame" x="138" y="161" width="216.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="mobile"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mobile" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZs-0l-sNS">
                                                 <rect key="frame" x="24" y="161" width="78.5" height="30"/>
@@ -573,9 +616,10 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-AU-JG9">
                                                 <rect key="frame" x="138" y="232" width="216.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="email"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o93-4i-vhx">
                                                 <rect key="frame" x="24" y="232" width="78.5" height="30"/>
