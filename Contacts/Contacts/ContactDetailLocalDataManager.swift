@@ -27,8 +27,6 @@ class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol 
                 managedObject.setValue(!(contact.first?.favorite)!, forKey: "favorite")
                 
                 try managedOC.save()
-                
-                print(try retrieveContactById(id: id))
             }
         } catch let error as NSError {
             print(error.localizedDescription)

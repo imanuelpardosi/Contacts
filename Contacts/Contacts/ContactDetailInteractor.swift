@@ -17,7 +17,6 @@ class ContactDetailInteractor: ContactDetailInteractorInputProtocol {
     func getCurrentFavorite(id: Int) -> Bool {
         do {
             let contact = try localDatamanager?.retrieveContactById(id: id)
-            print("contact: \(contact)")
             return (contact?.first?.favorite)!
         } catch {
             return false

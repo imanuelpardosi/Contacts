@@ -54,7 +54,6 @@ class ContactListLocalDataManager: ContactListLocalDataManagerInputProtocol {
             contact.email = email
             contact.phoneNumber = phoneNumber
             
-            print("cont: \(contact)")
             try managedOC.save()
         }
         
