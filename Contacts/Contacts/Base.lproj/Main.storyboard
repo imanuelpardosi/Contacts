@@ -69,7 +69,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNH-Dq-ozI" id="v0h-i9-Hhz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="pVN-eT-g91" userLabel="profilePicture">
@@ -87,7 +87,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star-color" translatesAutoresizingMaskIntoConstraints="NO" id="Jcd-fX-r6t" userLabel="favorite">
-                                                            <rect key="frame" x="362" y="22" width="20" height="19"/>
+                                                            <rect key="frame" x="323" y="22" width="20" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="XVx-54-jxq"/>
                                                             </constraints>
@@ -533,6 +533,7 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.50980392156862742" green="0.95686274509803915" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="topView"/>
                                         <constraints>
                                             <constraint firstItem="Gar-RS-5RU" firstAttribute="centerX" secondItem="XeN-rw-6un" secondAttribute="centerX" id="D5e-dC-Y9h"/>
                                             <constraint firstItem="Qag-KC-41x" firstAttribute="centerX" secondItem="XeN-rw-6un" secondAttribute="centerX" id="VWj-Ik-4Fy"/>

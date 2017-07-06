@@ -100,6 +100,7 @@ class ContactsUITests: XCTestCase {
         let txtFieldEmail = app.textFields["email"]
         let btnDone = app.buttons["Done"]
         let btnCancel = app.buttons["Cancel"]
+        let topView = app.otherElements["topView"]
         
         app.buttons["Add"].tap()
         
@@ -112,12 +113,19 @@ class ContactsUITests: XCTestCase {
         
         txtFieldFirstName.tap()
         txtFieldFirstName.typeText("First")
+        
+        topView.tap()
         txtFieldLastName.tap()
         txtFieldLastName.typeText("Last")
+        
+        topView.tap()
         txtFieldMobile.tap()
         txtFieldMobile.typeText("+6282256789300")
+        
+        topView.tap()
         txtFieldEmail.tap()
         txtFieldEmail.typeText("first@last.com")
+        topView.tap()
         
         app.buttons["Done"].tap()
     }
@@ -133,6 +141,8 @@ class ContactsUITests: XCTestCase {
         let btnCancel = app.buttons["Cancel"]
         let btnEdit = app.buttons["Edit"]
         let name = app.staticTexts.element(matching: .any, identifier: "name")
+        let topView = app.otherElements["topView"]
+        
         app.cells.element(boundBy: 5).tap()
         
         XCTAssertTrue(btnEdit.exists)
@@ -147,11 +157,12 @@ class ContactsUITests: XCTestCase {
         XCTAssertTrue(btnCancel.exists)
         
         txtFieldFirstName.clearAndEnterText(text: "Risa")
-        txtFieldLastName.clearAndEnterText(text: "Qwerty")
+        topView.tap()
+        txtFieldLastName.clearAndEnterText(text: "Rasi")
         
         app.buttons["Done"].tap()
         
-        XCTAssertEqual(name.label, "Risa Qwerty")
+        XCTAssertEqual(name.label, "Risa Rasi")
     }
     
     func testUpdateFavourite() {

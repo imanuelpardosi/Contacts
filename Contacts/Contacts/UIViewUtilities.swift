@@ -14,13 +14,9 @@ class UIViewUtilities {
     
     func circleView(views: UIView...) {
         for view: UIView in views {
-            
             view.frame.size.height = view.frame.size.width
             view.layer.cornerRadius = view.frame.size.width / 2
             view.clipsToBounds = true
-            
-            print(" view.frame.size.height: \( view.frame.size.height)")
-            print(" view.frame.size.width: \( view.frame.size.width)")
         }
     }
     

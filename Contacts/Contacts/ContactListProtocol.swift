@@ -14,7 +14,7 @@ protocol ContactListViewProtocol: class {
     var presenter: ContactListPresenterProtocol? { get set }
     
     // PRESENTER -> VIEW
-    func showPosts(with contacts: [ContactModel])
+    func showContacts(with contacts: [ContactModel])
     func showError(errorMessage: String)
     func showLoading()
     func hideLoading()

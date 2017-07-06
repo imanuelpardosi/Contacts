@@ -31,7 +31,7 @@ class ContactListPresenter: ContactListPresenterProtocol {
 extension ContactListPresenter: ContactListInteractorOutputProtocol {
     func didRetrieveContacts(_ contacts: [ContactModel]) {
         view?.hideLoading()
-        view?.showPosts(with: contacts)
+        view?.showContacts(with: contacts)
     }
     
     func onError(errorMessage: String) {

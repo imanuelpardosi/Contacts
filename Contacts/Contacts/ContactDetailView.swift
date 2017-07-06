@@ -46,13 +46,12 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
         
         presenter?.viewDidLoad()
         
-        let stackViewWidht = (UIScreen.main.bounds.width - leftMargin.constant - rightMargin.constant)
-        let iconWidth = (stackView.frame.size.width - (stackView.spacing * 3)) / 4
+        DispatchQueue.main.async() {
+            let iconWidth = (self.stackView.frame.size.width - (self.stackView.spacing * 3)) / 4
+            self.btnHeightConstraint.constant = iconWidth
         
-        btnHeightConstraint.constant = iconWidth
-        
-        print("stack: \(stackView.frame.size)")
-        //print("btnMessage.frame.width: \(btnMessage.frame.width)")
+            self.uiViewUtilities.circleView(views: self.profilePicture, self.btnMessage, self.btnCall, self.btnEmail, self.btnFavorite)
+        }
         
         let backItem = UIBarButtonItem(title: "Contact", style: .plain, target: self, action: #selector(backTapped))
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backItem
@@ -62,9 +61,7 @@ class ContactDetailView: UIViewController, MFMessageComposeViewControllerDelegat
         self.navigationController?.navigationBar.tintColor = colorUtilities.colorFromHex(hex: "#50E3C2")
         self.navigationController?.view.backgroundColor = UIColor.white
         
-        uiViewUtilities.circleView(views: profilePicture, btnMessage, btnCall, btnEmail, btnFavorite)
         uiViewUtilities.setGradientBackground(topColor: "#FFFFFF", bottomColor: "#50E3C2", uiView: gradientView)
-        
     }
     
     func backTapped() {

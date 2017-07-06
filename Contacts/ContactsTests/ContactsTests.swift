@@ -7,16 +7,23 @@
 //
 
 import XCTest
-import Alamofire
 @testable import Contacts
 
 class ContactsTests: XCTestCase {
     
-    var addContact: AddEditContactRemoteDataManager!
+    var wireFrame: ContactListWireFrame!
+    var interactor: ContactDetailInteractor!
+    var view: ContactListView!
+    let contactListLocalData = ContactListLocalDataManager()
+    let addEditContactLocalData = AddEditContactLocalDataManager()
+    let contactDetailLocalData = ContactDetailLocalDataManager()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        wireFrame = ContactListWireFrame()
+        interactor = ContactDetailInteractor()
     }
     
     override func tearDown() {
@@ -24,16 +31,59 @@ class ContactsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGoToContactList() {
+        let contactList = ContactListWireFrame.createContactListModule()
         
+        XCTAssert(contactList.childViewControllers.capacity != 0)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testUpdateLocalData() {
+        var contact: [Contact]
+        do {
+            try addEditContactLocalData.updateContact(id: 392, firstName: "imanuel", lastName: "pardosi", favorite: false, profilePicture: "path", email: "nuel.pard@gmail.co", phoneNumber: "+621234568394")
+            
+            contact = try contactListLocalData.retrieveContactById(id: 392)
+            XCTAssertEqual(contact.first?.id, 392)
+            XCTAssertEqual(contact.first?.firstName, "imanuel")
+        } catch let err {
+            print("err: \(err)")
+        }
+    }
+    
+    func testRetrieveContactById() {
+        var contact: [Contact]
+        do {
+            contact = try contactListLocalData.retrieveContactById(id: 392)
+            
+            XCTAssertEqual(contact.first?.id, 392)
+            
+        } catch let err {
+            print("err: \(err)")
+        }
+    }
+    
+    func testRetrieveAllContact() {
+        var contact: [Contact]
+        do {
+            contact = try contactListLocalData.retrieveContactList()
+            
+            XCTAssertNotNil(contact.count)
+        } catch let err {
+            print("err: \(err)")
+        }
+    }
+    
+    func testUpdateFavorite() {
+        var contact: [Contact]
+        do {
+            contact = try contactListLocalData.retrieveContactById(id: 392)
+            let currentFav = contact.first?.favorite
+            try contactDetailLocalData.updateFavorite(id: 392)
+            
+            XCTAssertNotEqual(currentFav, !currentFav!)
+        } catch let err {
+            print("err: \(err)")
         }
     }
 }
+

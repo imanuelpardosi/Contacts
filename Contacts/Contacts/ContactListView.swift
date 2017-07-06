@@ -72,7 +72,7 @@ extension ContactListView: UITableViewDataSource, UITableViewDelegate {
 
 extension ContactListView: ContactListViewProtocol {
     
-    func showPosts(with contacts: [ContactModel]) {
+    func showContacts(with contacts: [ContactModel]) {
         contactList = contacts
         contactTable.reloadData()
     }
