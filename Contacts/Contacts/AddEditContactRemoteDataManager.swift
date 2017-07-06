@@ -50,7 +50,9 @@ class AddEditContactRemoteDataManager: AddEditContactRemoteDataManagerInputProto
         urlRequest.httpMethod = "PUT"
         
         let parameters: Parameters = ["first_name": firstName,
-                                      "last_name": lastName]
+                                      "last_name": lastName,
+                                      "phone_number": phoneNumber,
+                                      "email": email]
         do {
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
         } catch {
